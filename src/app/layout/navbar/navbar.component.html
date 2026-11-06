@@ -1,5 +1,6 @@
 <header
   class="navbar"
+  [class.navbar--kora-hero]="scrollStore.activeSectionIndex() === 0"
   [class.navbar--compact]="scrollStore.isNavbarCompact()"
   [class.navbar--menu-open]="scrollStore.isMobileMenuOpen()"
 >
@@ -10,7 +11,11 @@
       aria-label="Back to top"
       (click)="onLogoClick()"
     >
-      <app-brand-logo size="sm" />
+      @if (scrollStore.activeSectionIndex() === 0) {
+        <img class="navbar__kora-logo" src="/assets/kora/Logo.svg" alt="KORA" />
+      } @else {
+        <app-brand-logo size="sm" />
+      }
     </button>
 
     <div class="navbar__right">

@@ -1,38 +1,13 @@
-<section
-  class="hero"
-  [class.hero--active]="isActive()"
-  aria-label="Engineered for the Unstoppable"
->
+<section class="hero" [class.hero--active]="isActive()" aria-label="KORA match balls">
   <div class="hero__backdrop" [style.transform]="parallaxTransform()">
-    <div class="hero__studio-glow"></div>
-    <app-optimized-image
-      class="hero__image"
-      [asset]="content().responsiveBg"
-    />
-    <div class="hero__color-grade"></div>
-    <div class="hero__bottom-mist"></div>
+    <img class="hero__image" src="/assets/kora/Home.webp" alt="KORA footballer in motion" fetchpriority="high" />
   </div>
-
-  <app-orbital-graphic variant="hero" [isActive]="isActive()" />
-
+  <div class="hero__grid" aria-hidden="true"></div>
   <div class="hero__container">
-    <aside class="hero__manifesto">
-      <p class="hero__manifesto-text">{{ content().topRightCopy }}</p>
-    </aside>
-
     <div class="hero__headline-group">
-      <h1 class="hero__title">
-        <span class="hero__title-line hero__title-line--1">{{ content().titleLine1 }}</span>
-        <span class="hero__title-line hero__title-line--2">{{ content().titleLine2 }}</span>
-      </h1>
-
-      <div class="hero__cta-wrap">
-        <app-pill-button
-          [label]="content().ctaLabel"
-          variant="frosted"
-          (actionTriggered)="onShopNow()"
-        />
-      </div>
+      <h1 class="hero__title">MATCH BALLS</h1>
+      <p class="hero__subtitle">Designed in Egypt, Engineered in Germany</p>
+      <p class="hero__description">KORA® IS A FOOTBALL CREATIVE LAB<br />MAKING PERFORMANCE BALLS AND CULTURAL WEAR.</p>
     </div>
   </div>
 </section>

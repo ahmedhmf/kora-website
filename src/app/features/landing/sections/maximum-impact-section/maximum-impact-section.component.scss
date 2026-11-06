@@ -4,145 +4,73 @@
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(165deg, #d7e5f0 0%, #b6cde0 55%, #95b3cc 100%);
+  background: #f0f0f0;
+  color: #080808;
 
   &__backdrop {
     position: absolute;
     inset: 0;
-    z-index: 1;
-    overflow: hidden;
+    will-change: transform;
+    transition: transform 0.9s var(--ease-out-expo);
   }
 
   &__bg-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 35%;
-    filter: grayscale(100%) contrast(1.22) brightness(0.95);
-    mix-blend-mode: multiply;
-    opacity: 0.68;
-    transform: scale(1.04);
-    transition: transform 1.2s var(--ease-out-expo);
+    object-position: center;
   }
 
-  &__icy-wash {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      circle at 78% 36%,
-      rgba(240, 248, 255, 0.72) 0%,
-      rgba(182, 206, 225, 0.48) 52%,
-      rgba(130, 162, 190, 0.55) 100%
-    );
-  }
-
-  &__stage {
+  &__content {
     position: relative;
-    z-index: 5;
-    width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
-    padding: clamp(4.5rem, 11vh, 7.5rem) clamp(1.25rem, 9vw, 8.5rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__frame {
-    position: relative;
-    width: 100%;
-    max-width: 1120px;
-    min-height: clamp(420px, 68vh, 640px);
-    padding: clamp(2rem, 4.5vw, 3.75rem);
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
-    box-shadow:
-      0 32px 72px rgba(10, 24, 38, 0.35),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.32);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-    will-change: transform;
-    transition: transform 0.9s var(--ease-out-expo);
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: clamp(5.5rem, 12.5vh, 9rem) clamp(1.25rem, 7.1vw, 9rem) clamp(4rem, 12vh, 9rem);
   }
 
-  &__frame-gradient {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background:
-      radial-gradient(circle at 82% 24%, rgba(255, 255, 255, 0.96) 0%, rgba(215, 232, 245, 0.75) 28%, transparent 62%),
-      linear-gradient(132deg, #0b1622 0%, #152638 38%, #4e6f8c 74%, #9ab7cf 100%);
-    opacity: 0.92;
+  &__eyebrow {
+    font-size: clamp(0.85rem, 1.1vw, 1.2rem);
+    font-weight: 400;
+    letter-spacing: -0.035em;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
   }
 
-  &__top-left,
-  &__bottom-row {
-    position: relative;
-    z-index: 2;
+  &__features {
+    width: min(315px, 100%);
+    margin-left: clamp(-3rem, -2.5vw, 0px);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s var(--ease-out-expo) 0.22s, transform 0.9s var(--ease-out-expo) 0.22s;
   }
 
-  &__bottom-row {
+  &__features li {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1.5rem;
-    margin-top: auto;
+    align-items: center;
+    min-height: 26px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+    font-size: clamp(0.75rem, 0.86vw, 0.95rem);
+    line-height: 1.25;
+    white-space: nowrap;
   }
 
-  &__title {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5.8vw, 4.9rem);
-    font-weight: 600;
-    line-height: 0.98;
-    letter-spacing: -0.038em;
-    color: #ffffff;
-
-    &--left {
-      text-align: left;
-    }
-
-    &--right {
-      text-align: right;
-      text-shadow: 0 8px 28px rgba(14, 28, 42, 0.25);
-    }
-  }
-
-  &__title-line {
-    display: block;
-    opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity 0.85s var(--ease-out-expo),
-      transform 0.85s var(--ease-out-expo);
-
-    &:nth-child(1) {
-      transition-delay: 0.12s;
-    }
-    &:nth-child(2) {
-      transition-delay: 0.24s;
-    }
-  }
-
-  &__cta {
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-      opacity 0.85s var(--ease-out-expo) 0.35s,
-      transform 0.85s var(--ease-out-expo) 0.35s;
+  &__features li::before {
+    content: '';
+    display: inline-block;
+    flex: 0 0 18px;
+    height: 15px;
+    margin-right: 4px;
+    background: url('/assets/kora/Logomark.svg') center / contain no-repeat;
   }
 
   &--active {
-    .impact__bg-image {
-      transform: scale(1);
-    }
-
-    .impact__title-line,
-    .impact__cta {
+    .impact__eyebrow, .impact__features {
       opacity: 1;
       transform: translateY(0);
     }
@@ -151,23 +79,14 @@
 
 @media (max-width: 768px) {
   .impact {
-    &__stage {
-      padding: 4.5rem 1.25rem;
-    }
-
-    &__frame {
-      min-height: 460px;
-      padding: 1.75rem;
-    }
-
-    &__bottom-row {
-      flex-direction: column-reverse;
-      align-items: flex-start;
-      gap: 1.75rem;
-    }
-
-    &__bottom-right {
-      align-self: flex-end;
+    &__bg-image { object-position: 53% center; }
+    &__content { padding: 5.5rem 1.25rem 4rem; }
+    &__features {
+      margin-left: 0;
+      width: min(310px, 100%);
+      padding: 0.5rem;
+      background: rgba(245,245,245,0.72);
+      backdrop-filter: blur(4px);
     }
   }
 }

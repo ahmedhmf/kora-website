@@ -1,50 +1,16 @@
-<section
-  class="impact"
-  [class.impact--active]="isActive()"
-  aria-label="Optimized for Maximum Impact"
->
-  <app-section-meta
-    [codeLabel]="content().sectionCode"
-    [numberLabel]="content().sectionNumber"
-    [isActive]="isActive()"
-    [darkText]="true"
-  />
-
-  <div class="impact__backdrop">
-    <app-optimized-image
-      class="impact__bg-image"
-      [asset]="content().responsiveBackdrop"
-    />
-    <div class="impact__icy-wash"></div>
+<section class="impact" [class.impact--active]="isActive()" aria-label="KORA performance footballs">
+  <div class="impact__backdrop" [style.transform]="frameTransform()">
+    <img class="impact__bg-image" src="/assets/kora/4th.webp" alt="Three KORA performance footballs in red, blue and bronze colorways" loading="lazy" />
   </div>
 
-  <div class="impact__stage">
-    <div class="impact__frame" [style.transform]="frameTransform()">
-      <div class="impact__frame-gradient"></div>
-
-      <div class="impact__top-left">
-        <h2 class="impact__title impact__title--left">
-          <span class="impact__title-line">{{ content().topTitleLine1 }}</span>
-          <span class="impact__title-line">{{ content().topTitleLine2 }}</span>
-        </h2>
-      </div>
-
-      <div class="impact__bottom-row">
-        <div class="impact__cta">
-          <app-pill-button
-            [label]="content().ctaLabel"
-            variant="frosted"
-            (actionTriggered)="onShopNow()"
-          />
-        </div>
-
-        <div class="impact__bottom-right">
-          <h2 class="impact__title impact__title--right">
-            <span class="impact__title-line">{{ content().bottomTitleLine1 }}</span>
-            <span class="impact__title-line">{{ content().bottomTitleLine2 }}</span>
-          </h2>
-        </div>
-      </div>
-    </div>
+  <div class="impact__content">
+    <h2 class="impact__eyebrow">FOOTBALLS</h2>
+    <ul class="impact__features" aria-label="Football performance features">
+      <li>Reduced-drag flight</li>
+      <li>Precision flight stability</li>
+      <li>Haptic-responsive touch</li>
+      <li>Optimized energy rebound</li>
+      <li>Turbocharged Acceleration</li>
+    </ul>
   </div>
 </section>

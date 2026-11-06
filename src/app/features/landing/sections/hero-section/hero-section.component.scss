@@ -21,6 +21,24 @@
     object-position: center;
   }
 
+  // The scroll-controlled backdrop stays independent from the cinematic image reveal.
+  &--active &__image {
+    animation: hero-image-arrive 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  &__backdrop::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #e7e7e7;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  &--active &__backdrop::after {
+    animation: hero-curtain-reveal 1.45s cubic-bezier(0.7, 0, 0.2, 1) both;
+  }
+
   &__grid {
     position: absolute;
     inset: 0 0 0 50%;
@@ -75,14 +93,52 @@
     line-height: 1.1;
   }
 
+  &--active &__title {
+    animation: hero-copy-arrive 1.15s var(--ease-out-expo) 0.2s both;
+  }
+
+  &--active &__subtitle {
+    animation: hero-copy-arrive 1.1s var(--ease-out-expo) 0.48s both;
+  }
+
+  &--active &__description {
+    animation: hero-copy-arrive 1s var(--ease-out-expo) 0.72s both;
+  }
+
   &--active &__headline-group {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+@keyframes hero-image-arrive {
+  from { opacity: 0.62; filter: blur(7px); transform: scale(1.045); }
+  to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+@keyframes hero-curtain-reveal {
+  0% { opacity: 1; clip-path: inset(0 0 0 0); }
+  100% { opacity: 1; clip-path: inset(0 0 0 100%); }
+}
+
+@keyframes hero-copy-arrive {
+  from { opacity: 0; filter: blur(10px); transform: translate3d(0, 28px, 0); }
+  to { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    &__backdrop { transform: none !important; transition: none; }
+    &__backdrop::after { display: none; }
+    &__image, &__title, &__subtitle, &__description { animation: none !important; filter: none; transform: none; opacity: 1; }
+    &__headline-group { opacity: 1; transform: none; transition: none; }
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
+    &--active .hero__image { animation-duration: 1.1s; }
+    &--active .hero__backdrop::after { animation-duration: 0.9s; }
     &__image { object-position: 59% center; }
     &__grid { inset-inline-start: 40%; }
     &__container { padding: 5.5rem clamp(1rem, 5vw, 2rem) clamp(5rem, 16vh, 10rem); }

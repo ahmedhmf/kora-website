@@ -1,53 +1,28 @@
-<section
-  class="peak"
-  [class.peak--active]="isActive()"
-  aria-label="Peak Performance Limitless Style Next-Gen Apparel"
->
-  <app-section-meta
-    [codeLabel]="content().sectionCode"
-    [numberLabel]="content().sectionNumber"
-    [isActive]="isActive()"
-  />
-
+<section class="peak" [class.peak--active]="isActive()" aria-label="KORA identity — culture, performance, expression">
   <div class="peak__split">
-    <div class="peak__left">
-      <div class="peak__left-glow"></div>
-    </div>
-
+    <div class="peak__left"></div>
     <div class="peak__right">
       <div class="peak__portrait-wrap" [style.transform]="rightPortraitTransform()">
-        <app-optimized-image
-          class="peak__portrait"
-          [asset]="content().responsiveRightImage"
-        />
-        @if (!isLowBandwidth()) {
-          <app-optimized-image
-            class="peak__portrait peak__portrait--motion"
-            [asset]="content().responsiveRightImage"
-            [decorative]="true"
-          />
-        }
+        <img class="peak__portrait" src="/assets/kora/3rd.webp" alt="Red and black KORA football culture artwork" loading="lazy" />
       </div>
-      <div class="peak__right-grade"></div>
     </div>
   </div>
 
-  <app-orbital-graphic variant="split-left" [isActive]="isActive()" />
-
   <div class="peak__content">
-    <p class="peak__copy peak__copy--top">{{ content().topCopy }}</p>
-
-    <h2 class="peak__headline">
-      @for (line of content().titleLines; track line; let idx = $index) {
-        <span
-          class="peak__headline-line"
-          [style.transition-delay]="(0.12 + idx * 0.12) + 's'"
-        >
-          {{ line }}
-        </span>
-      }
-    </h2>
-
-    <p class="peak__copy peak__copy--bottom">{{ content().bottomCopy }}</p>
+    <p class="peak__eyebrow">IDENTITY</p>
+    <div class="peak__statement">
+      <div class="peak__statement-row">
+        <h2 class="peak__headline-line">CULTURE,</h2>
+        <p class="peak__annotation">RAW FOOTBALL CULTURE</p>
+      </div>
+      <div class="peak__statement-row">
+        <h2 class="peak__headline-line">PERFORMANCE,</h2>
+        <p class="peak__annotation">Made to play</p>
+      </div>
+      <div class="peak__statement-row">
+        <h2 class="peak__headline-line">EXPRESSION.</h2>
+        <p class="peak__annotation">INDEPENDENT CREATIVE EXPRESSION</p>
+      </div>
+    </div>
   </div>
 </section>

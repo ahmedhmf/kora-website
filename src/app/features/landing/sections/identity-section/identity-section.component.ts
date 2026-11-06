@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 @Component({
-  selector: 'app-peak-performance-section',
+  selector: 'app-identity-section',
   standalone: true,
   imports: [],
-  templateUrl: './peak-performance-section.component.html',
-  styleUrl: './peak-performance-section.component.scss',
+  templateUrl: './identity-section.component.html',
+  styleUrl: './identity-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PeakPerformanceSectionComponent {
+export class IdentitySectionComponent {
   readonly isActive = input<boolean>(false);
   readonly progress = input<number>(0);
 

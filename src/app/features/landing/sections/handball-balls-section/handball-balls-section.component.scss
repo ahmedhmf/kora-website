@@ -1,4 +1,4 @@
-.handball-products {
+.handball-balls {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -66,7 +66,7 @@
   }
 
   &--active {
-    .handball-products__eyebrow, .handball-products__features {
+    .handball-balls__eyebrow, .handball-balls__features {
       opacity: 1;
       transform: translateY(0);
     }
@@ -74,7 +74,7 @@
 }
 
 @media (max-width: 768px) {
-  .handball-products {
+  .handball-balls {
     &__image { object-position: 55% center; }
     &__content { padding: 5.5rem 1.25rem 4rem; }
     &__features {

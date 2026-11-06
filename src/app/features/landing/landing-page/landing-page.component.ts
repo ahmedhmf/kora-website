@@ -13,13 +13,13 @@ import {
 import { ScrollStore } from '../../../core/store/scroll.store';
 import { NavbarComponent } from '../../../layout/navbar/navbar.component';
 import { ScrollNavDotsComponent } from '../../../shared/components/scroll-nav-dots/scroll-nav-dots.component';
-import { BeyondLimitsSectionComponent } from '../sections/beyond-limits-section/beyond-limits-section.component';
+import { HandballSectionComponent } from '../sections/handball-section/handball-section.component';
 import { FooterSectionComponent } from '../sections/footer-section/footer-section.component';
-import { HandballProductsSectionComponent } from '../sections/handball-products-section/handball-products-section.component';
+import { HandballBallsSectionComponent } from '../sections/handball-balls-section/handball-balls-section.component';
 import { HeroSectionComponent } from '../sections/hero-section/hero-section.component';
-import { InnerPowerSectionComponent } from '../sections/inner-power-section/inner-power-section.component';
-import { MaximumImpactSectionComponent } from '../sections/maximum-impact-section/maximum-impact-section.component';
-import { PeakPerformanceSectionComponent } from '../sections/peak-performance-section/peak-performance-section.component';
+import { DnaSectionComponent } from '../sections/dna-section/dna-section.component';
+import { FootballsSectionComponent } from '../sections/footballs-section/footballs-section.component';
+import { IdentitySectionComponent } from '../sections/identity-section/identity-section.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -28,11 +28,11 @@ import { PeakPerformanceSectionComponent } from '../sections/peak-performance-se
     NavbarComponent,
     ScrollNavDotsComponent,
     HeroSectionComponent,
-    InnerPowerSectionComponent,
-    PeakPerformanceSectionComponent,
-    MaximumImpactSectionComponent,
-    BeyondLimitsSectionComponent,
-    HandballProductsSectionComponent,
+    DnaSectionComponent,
+    IdentitySectionComponent,
+    FootballsSectionComponent,
+    HandballSectionComponent,
+    HandballBallsSectionComponent,
     FooterSectionComponent,
   ],
   templateUrl: './landing-page.component.html',

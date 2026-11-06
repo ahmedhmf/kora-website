@@ -1,4 +1,4 @@
-.inner-power {
+.dna {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -76,7 +76,7 @@
   }
 
   &--active {
-    .inner-power__eyebrow, .inner-power__line, .inner-power__description {
+    .dna__eyebrow, .dna__line, .dna__description {
       opacity: 1;
       transform: translate3d(0, 0, 0);
     }
@@ -84,7 +84,7 @@
 }
 
 @media (max-width: 768px) {
-  .inner-power {
+  .dna {
     &__image { object-position: 35% center; opacity: 0.66; }
     &__overlay { padding: 6rem 1.25rem 3rem; }
     &__content {

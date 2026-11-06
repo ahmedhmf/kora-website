@@ -1,5 +1,5 @@
 <div class="landing-shell">
-  <!-- Top Fixed Navigation -->
+  <!-- Fixed KORA logo -->
   <app-navbar />
 
   <!-- Right Floating Section Progress Dots -->
@@ -32,72 +32,72 @@
       />
     </div>
 
-    <!-- Section 1: Release Your Inner Power -->
+    <!-- Section 1: DNA -->
     <div
       #sectionSlot
       class="landing-shell__section"
       [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 1"
       data-section-index="1"
     >
-      <app-inner-power-section
+      <app-dna-section
         [isActive]="isSectionRevealed(1)"
         [progress]="getSectionProgress(1)"
       />
     </div>
 
-    <!-- Section 2: Peak Performance / Limitless Style / Next-Gen Apparel -->
+    <!-- Section 2: Identity -->
     <div
       #sectionSlot
       class="landing-shell__section"
       [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 2"
       data-section-index="2"
     >
-      <app-peak-performance-section
+      <app-identity-section
         [isActive]="isSectionRevealed(2)"
         [progress]="getSectionProgress(2)"
       />
     </div>
 
-    <!-- Section 3: Optimized for Maximum Impact -->
+    <!-- Section 3: Footballs -->
     <div
       #sectionSlot
       class="landing-shell__section"
       [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 3"
       data-section-index="3"
     >
-      <app-maximum-impact-section
+      <app-footballs-section
         [isActive]="isSectionRevealed(3)"
         [progress]="getSectionProgress(3)"
       />
     </div>
 
-    <!-- Section 4: Beyond Limits -->
+    <!-- Section 4: Handball -->
     <div
       #sectionSlot
       class="landing-shell__section"
       [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 4"
       data-section-index="4"
     >
-      <app-beyond-limits-section
+      <app-handball-section
         [isActive]="isSectionRevealed(4)"
         [progress]="getSectionProgress(4)"
       />
     </div>
 
-    <!-- Section 5: KORA Handball products -->
+    <!-- Section 5: Handball Balls -->
     <div
       #sectionSlot
       class="landing-shell__section"
       [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 5"
       data-section-index="5"
     >
-      <app-handball-products-section
+      <app-handball-balls-section
         [isActive]="isSectionRevealed(5)"
         [progress]="getSectionProgress(5)"
       />
     </div>
 
-    <!-- Section 6: Existing footer -->
+    <!-- Section 6: Footer / Newsletter -->
     <div
       #sectionSlot
       class="landing-shell__section"

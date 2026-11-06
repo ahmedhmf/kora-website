@@ -1,59 +1,37 @@
-# KoraWebSite
+# KORA Website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.1.
+An Angular single-page site for KORA match balls and handballs. The seven full-screen sections share the same scroll-snap navigation and reveal animations.
 
-## Development server
+## Sections
 
-To start a local development server, run:
+Each section lives in `src/app/features/landing/sections/`:
 
-```bash
-ng serve
-```
+1. `hero-section` — Match Balls hero
+2. `dna-section` — Performance With Purpose
+3. `identity-section` — Culture, Performance, Expression
+4. `footballs-section` — Football product features
+5. `handball-section` — More Than a Game
+6. `handball-balls-section` — Handball product features
+7. `footer-section` — Newsletter panel
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The ordered sections and scroll behavior are maintained in:
 
-## Code scaffolding
+- `src/app/features/landing/landing-page/` — section composition, progress, scroll-snap and keyboard navigation
+- `src/app/core/store/scroll.store.ts` — section metadata and active/visited state
+- `src/app/shared/components/scroll-nav-dots/` — right-side navigation dots
+- `src/app/layout/navbar/` — KORA logo that returns to the first section
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+KORA artwork and SVG marks are stored in `public/assets/kora/`. Site-wide styles and the Chakra Petch font are configured in `src/styles.scss`.
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Development
 
 ```bash
-ng build
+npm ci
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Build the production bundle with `npm run build`; run unit tests with `npm test`.
 
-## Running unit tests
+## Newsletter
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The footer validates the email field and privacy checkbox, but **does not submit or store addresses** yet. Connect a subscription provider before enabling real signups.

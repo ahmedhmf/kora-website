@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 @Component({
-  selector: 'app-maximum-impact-section',
+  selector: 'app-footballs-section',
   standalone: true,
   imports: [],
-  templateUrl: './maximum-impact-section.component.html',
-  styleUrl: './maximum-impact-section.component.scss',
+  templateUrl: './footballs-section.component.html',
+  styleUrl: './footballs-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MaximumImpactSectionComponent {
+export class FootballsSectionComponent {
   readonly isActive = input<boolean>(false);
   readonly progress = input<number>(0);
 

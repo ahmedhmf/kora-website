@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 @Component({
-  selector: 'app-beyond-limits-section',
+  selector: 'app-handball-section',
   standalone: true,
   imports: [],
-  templateUrl: './beyond-limits-section.component.html',
-  styleUrl: './beyond-limits-section.component.scss',
+  templateUrl: './handball-section.component.html',
+  styleUrl: './handball-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BeyondLimitsSectionComponent {
+export class HandballSectionComponent {
   readonly isActive = input<boolean>(false);
   readonly progress = input<number>(0);
 

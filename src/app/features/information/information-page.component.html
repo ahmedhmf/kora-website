@@ -1,0 +1,41 @@
+<main class="information">
+  <header class="information__header">
+    <a routerLink="/" aria-label="KORA homepage"><img src="/assets/kora/Logo.svg" width="132" height="40" alt="KORA" /></a>
+    <a class="information__back" routerLink="/">Back to homepage</a>
+  </header>
+
+  <article class="information__article">
+    <div class="information__intro">
+      <p class="information__eyebrow">{{ page.eyebrow }}</p>
+      <h1>{{ page.title }}</h1>
+      <p class="information__lead">{{ page.description }}</p>
+    </div>
+    <img class="information__image" [src]="page.image" [alt]="page.imageAlt" />
+
+    <section class="information__details" aria-label="Product information">
+      @for (item of page.details; track item.heading) {
+        <div class="information__detail">
+          <h2>{{ item.heading }}</h2>
+          <p>{{ item.body }}</p>
+        </div>
+      }
+    </section>
+
+    <section class="information__facts" aria-label="At a glance">
+      <h2>At a glance</h2>
+      <ul>
+        @for (fact of page.facts; track fact) { <li>{{ fact }}</li> }
+      </ul>
+    </section>
+  </article>
+
+  <footer class="information__footer">
+    <p>Explore KORA</p>
+    <nav aria-label="More about KORA">
+      <a routerLink="/about">About</a>
+      <a routerLink="/footballs">Footballs</a>
+      <a routerLink="/handballs">Handballs</a>
+      <a routerLink="/technology">Technology</a>
+    </nav>
+  </footer>
+</main>

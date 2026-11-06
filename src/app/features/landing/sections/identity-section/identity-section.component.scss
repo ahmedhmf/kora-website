@@ -49,7 +49,7 @@
   }
 
   &__eyebrow {
-    font-size: clamp(0.85rem, 1.1vw, 1.2rem);
+    font-size: clamp(0.85rem, 1.042vw, 1.8rem);
     font-weight: 400;
     opacity: 0;
     transform: translateY(18px);
@@ -63,7 +63,7 @@
   &__headline-line {
     display: block;
     font-family: var(--font-display);
-    font-size: clamp(2.7rem, 4.7vw, 11rem);
+    font-size: clamp(2.7rem, 5vw, 11rem);
     font-weight: 500;
     line-height: 0.96;
     letter-spacing: -0.073em;
@@ -77,7 +77,7 @@
   &__statement-row:nth-child(3) .peak__headline-line { transition-delay: 0.24s; }
 
   &__annotation {
-    font-size: clamp(0.75rem, 1.03vw, 1.8rem);
+    font-size: clamp(0.75rem, 1.042vw, 1.8rem);
     line-height: 1.1;
     letter-spacing: -0.025em;
     opacity: 0;

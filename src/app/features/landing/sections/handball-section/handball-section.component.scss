@@ -49,7 +49,7 @@
   }
 
   &__eyebrow {
-    font-size: clamp(0.85rem, 1.1vw, 1.2rem);
+    font-size: clamp(0.85rem, 1.042vw, 1.8rem);
     font-weight: 400;
     opacity: 0;
     transform: translateY(18px);
@@ -63,7 +63,7 @@
 
   &__headline {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 4.8vw, 11rem);
+    font-size: clamp(3rem, 5vw, 11rem);
     font-weight: 500;
     line-height: 0.98;
     letter-spacing: -0.072em;
@@ -76,7 +76,7 @@
   &__description {
     max-width: 640px;
     margin-top: 0.8rem;
-    font-size: clamp(0.78rem, 0.84vw, 1.5rem);
+    font-size: clamp(0.78rem, 0.833vw, 1.5rem);
     line-height: 1.45;
     opacity: 0;
     transform: translateY(24px);

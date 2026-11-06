@@ -19,14 +19,15 @@ const INITIAL_SECTIONS: readonly SectionDescriptor[] = [
   { id: 'peak-performance', index: 2, numberLabel: '02', codeLabel: '02 / 04', title: 'Peak Performance' },
   { id: 'maximum-impact', index: 3, numberLabel: '03', codeLabel: '03 / 04', title: 'Maximum Impact' },
   { id: 'beyond-limits', index: 4, numberLabel: '04', codeLabel: '04 / 04', title: 'Beyond Limits' },
-  { id: 'footer', index: 5, numberLabel: '05', codeLabel: 'OX — END', title: 'Oxlando' },
+  { id: 'handball-products', index: 5, numberLabel: '05', codeLabel: '05 / 06', title: 'Handball Products' },
+  { id: 'footer', index: 6, numberLabel: '06', codeLabel: 'OX — END', title: 'Oxlando' },
 ];
 
 const initialState: ScrollState = {
   sections: INITIAL_SECTIONS,
   activeSectionIndex: 0,
   scrollProgress: 0,
-  sectionProgressMap: { 0: 1, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 },
+  sectionProgressMap: { 0: 1, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
   visitedIndices: [0],
   scrollDirection: 'down',
   isMobileMenuOpen: false,

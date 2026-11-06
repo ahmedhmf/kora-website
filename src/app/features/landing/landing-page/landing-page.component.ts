@@ -15,6 +15,7 @@ import { NavbarComponent } from '../../../layout/navbar/navbar.component';
 import { ScrollNavDotsComponent } from '../../../shared/components/scroll-nav-dots/scroll-nav-dots.component';
 import { BeyondLimitsSectionComponent } from '../sections/beyond-limits-section/beyond-limits-section.component';
 import { FooterSectionComponent } from '../sections/footer-section/footer-section.component';
+import { HandballProductsSectionComponent } from '../sections/handball-products-section/handball-products-section.component';
 import { HeroSectionComponent } from '../sections/hero-section/hero-section.component';
 import { InnerPowerSectionComponent } from '../sections/inner-power-section/inner-power-section.component';
 import { MaximumImpactSectionComponent } from '../sections/maximum-impact-section/maximum-impact-section.component';
@@ -31,6 +32,7 @@ import { PeakPerformanceSectionComponent } from '../sections/peak-performance-se
     PeakPerformanceSectionComponent,
     MaximumImpactSectionComponent,
     BeyondLimitsSectionComponent,
+    HandballProductsSectionComponent,
     FooterSectionComponent,
   ],
   templateUrl: './landing-page.component.html',

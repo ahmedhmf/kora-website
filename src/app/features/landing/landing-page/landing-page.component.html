@@ -84,16 +84,29 @@
       />
     </div>
 
-    <!-- Section 5: Oxlando Footer -->
+    <!-- Section 5: KORA Handball products -->
     <div
       #sectionSlot
       class="landing-shell__section"
       [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 5"
       data-section-index="5"
     >
-      <app-footer-section
+      <app-handball-products-section
         [isActive]="isSectionRevealed(5)"
         [progress]="getSectionProgress(5)"
+      />
+    </div>
+
+    <!-- Section 6: Existing footer -->
+    <div
+      #sectionSlot
+      class="landing-shell__section"
+      [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 6"
+      data-section-index="6"
+    >
+      <app-footer-section
+        [isActive]="isSectionRevealed(6)"
+        [progress]="getSectionProgress(6)"
       />
     </div>
   </main>

@@ -4,42 +4,8 @@
   min-height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
-  background: linear-gradient(180deg, #b8cde0 0%, #dae6f0 48%, #9cb6cc 100%);
+  background: #f0f0f0;
   color: #fff;
-
-  &__backdrop {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  &__mist-gradient {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 50% 45%, rgba(242, 248, 253, 0.72) 0%, transparent 65%),
-      linear-gradient(180deg, rgba(164, 190, 212, 0.45) 0%, rgba(44, 72, 98, 0.35) 100%);
-  }
-
-  &__athlete-wrap {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__athlete-img {
-    width: min(760px, 85vw);
-    height: 85%;
-    object-fit: cover;
-    object-position: center 20%;
-    filter: grayscale(100%) contrast(1.4) brightness(0.85);
-    mix-blend-mode: multiply;
-    opacity: 0.55;
-    mask-image: radial-gradient(ellipse at center, black 35%, transparent 72%);
-  }
 
   &__container {
     position: relative;

@@ -56,7 +56,8 @@ export class LandingPageComponent {
       const slots = this.sectionRefs();
       const targetEl = slots[targetIndex]?.nativeElement;
       if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        targetEl.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
         this.scrollStore.setActiveSection(targetIndex);
       }
       this.scrollStore.clearPendingScrollTarget();
@@ -115,6 +116,11 @@ export class LandingPageComponent {
 
   @HostListener('window:keydown', ['$event'])
   protected onKeyDown(event: KeyboardEvent): void {
+    const target = event.target as HTMLElement | null;
+    if (event.defaultPrevented || event.altKey || event.ctrlKey || event.metaKey ||
+        target?.isContentEditable || target?.closest('input, textarea, select, [contenteditable="true"]')) {
+      return;
+    }
     if (event.key === 'ArrowDown' || event.key === 'PageDown') {
       event.preventDefault();
       this.scrollStore.requestScrollToSection(this.scrollStore.activeSectionIndex() + 1);

@@ -13,6 +13,13 @@
     ></div>
   </div>
 
+  <!-- A brief red chapter marker unifies the seven cinematic reveals. -->
+  @for (chapter of [scrollStore.activeSectionIndex()]; track chapter) {
+    @if (chapter > 0) {
+      <div class="landing-shell__chapter-cue" aria-hidden="true"></div>
+    }
+  }
+
   <!-- Full-Screen Smooth Snap Scroll Viewport -->
   <main
     #scrollContainer

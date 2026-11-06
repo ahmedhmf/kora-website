@@ -36,6 +36,10 @@
     object-position: center;
   }
 
+  &--active &__image {
+    animation: handball-athlete-arrive 1.75s ease-out both;
+  }
+
   &__content {
     position: relative;
     z-index: 2;
@@ -70,7 +74,8 @@
     white-space: nowrap;
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.9s var(--ease-out-expo) 0.12s, transform 0.9s var(--ease-out-expo) 0.12s;
+    filter: blur(9px);
+    transition: opacity 1.15s var(--ease-out-expo) .17s, transform 1.2s var(--ease-out-expo) .17s, filter 1.2s ease-out .17s;
   }
 
   &__description {
@@ -80,14 +85,29 @@
     line-height: 1.45;
     opacity: 0;
     transform: translateY(24px);
-    transition: opacity 0.9s var(--ease-out-expo) 0.3s, transform 0.9s var(--ease-out-expo) 0.3s;
+    filter: blur(5px);
+    transition: opacity 1.05s var(--ease-out-expo) .65s, transform 1.05s var(--ease-out-expo) .65s, filter 1.05s ease-out .65s;
   }
 
   &--active {
     .beyond__eyebrow, .beyond__headline, .beyond__description {
       opacity: 1;
       transform: translateY(0);
+      filter: blur(0);
     }
+  }
+}
+
+@keyframes handball-athlete-arrive {
+  from { opacity: .65; filter: blur(7px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beyond {
+    &__image-wrap { transform: none !important; transition: none; }
+    &__image { animation: none !important; filter: none; }
+    &__eyebrow, &__headline, &__description { opacity: 1; filter: none; transform: none; transition: none; }
   }
 }
 
@@ -101,6 +121,7 @@
 
 @media (max-width: 768px) {
   .beyond {
+    &--active .beyond__image { animation-duration: 1.05s; }
     &__split { grid-template-columns: 1fr; grid-template-rows: 55% 45%; }
     &__content {
       width: 100%;

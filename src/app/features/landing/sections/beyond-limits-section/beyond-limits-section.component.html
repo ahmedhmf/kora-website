@@ -1,50 +1,18 @@
-<section
-  class="beyond"
-  [class.beyond--active]="isActive()"
-  aria-label="Beyond Limits Zero Gravity Tech"
->
-  <app-section-meta
-    [codeLabel]="content().sectionCode"
-    [numberLabel]="content().sectionNumber"
-    [isActive]="isActive()"
-  />
-
-  <div class="beyond__mesh" aria-hidden="true">
-    <div class="beyond__blob beyond__blob--1"></div>
-    <div class="beyond__blob beyond__blob--2"></div>
-    <div class="beyond__blob beyond__blob--3"></div>
-    <div class="beyond__diagonal-streak"></div>
-  </div>
-
-  <div class="beyond__container">
-    <div class="beyond__header">
-      <h2 class="beyond__headline">{{ content().headline }}</h2>
-    </div>
-
-    <div class="beyond__middle-row">
-      <figure class="beyond__portrait-card" [style.transform]="portraitOffset()">
-        <app-optimized-image
-          class="beyond__portrait-img"
-          [asset]="content().responsiveInsetPortrait"
-        />
-      </figure>
-    </div>
-
-    <div class="beyond__bottom-row">
-      <div class="beyond__feature">
-        <p class="beyond__feature-text">{{ content().leftFeatureDescription }}</p>
-      </div>
-
-      <div class="beyond__right-action">
-        <p class="beyond__micro-copy">{{ content().rightMicroCopy }}</p>
-        <app-pill-button
-          [label]="content().ctaLabel"
-          variant="frosted"
-          (actionTriggered)="onShopNow()"
-        />
+<section class="beyond" [class.beyond--active]="isActive()" aria-label="KORA handball — more than a game">
+  <div class="beyond__split">
+    <div class="beyond__left"></div>
+    <div class="beyond__right">
+      <div class="beyond__image-wrap" [style.transform]="portraitOffset()">
+        <img class="beyond__image" src="/assets/kora/5th.webp" alt="Handball athlete captured in a high-energy motion study" loading="lazy" />
       </div>
     </div>
   </div>
 
-  <div class="beyond__seam" aria-hidden="true"></div>
+  <div class="beyond__content">
+    <p class="beyond__eyebrow">HANDBALL</p>
+    <div class="beyond__statement">
+      <h2 class="beyond__headline">MORE THAN<br />A GAME.</h2>
+      <p class="beyond__description">A game of explosive movement, physical battles and split-second decisions. Driven by the team, defined by the intensity. KORA® develops performance Handballs for those who leave everything on the court.</p>
+    </div>
+  </div>
 </section>

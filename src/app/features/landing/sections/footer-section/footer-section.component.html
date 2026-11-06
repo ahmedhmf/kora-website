@@ -1,81 +1,38 @@
-<footer
-  class="footer"
-  [class.footer--active]="isActive()"
-  aria-label="Oxlando Footer"
->
+<footer class="footer" [class.footer--active]="isActive()" aria-label="KORA newsletter">
   <div class="footer__backdrop" aria-hidden="true">
     <div class="footer__mist-gradient"></div>
     <div class="footer__athlete-wrap">
-      <app-optimized-image
-        class="footer__athlete-img"
-        [asset]="content().responsiveBg"
-        [decorative]="true"
-      />
-      @if (!isLowBandwidth()) {
-        <app-optimized-image
-          class="footer__athlete-img footer__athlete-img--motion"
-          [asset]="content().responsiveBg"
-          [decorative]="true"
-        />
-      }
+      <app-optimized-image class="footer__athlete-img" [asset]="content().responsiveBg" [decorative]="true" />
     </div>
   </div>
 
   <div class="footer__container">
-    <div class="footer__top-grid">
-      <div class="footer__columns">
-        @for (group of content().linkGroups; track group.heading) {
-          <div class="footer__col">
-            <h3 class="footer__col-title">{{ group.heading }}</h3>
-            <ul class="footer__col-list">
-              @for (link of group.links; track link.label) {
-                <li>
-                  <button
-                    type="button"
-                    class="footer__link"
-                    (click)="onNavigate(link.sectionIndex)"
-                  >
-                    {{ link.label }}
-                  </button>
-                </li>
-              }
-            </ul>
-          </div>
-        }
-      </div>
+    <div class="footer__newsletter">
+      <h2 class="footer__headline">STAY INFORMED AND SAVE MONEY!</h2>
+      <p class="footer__intro">Be the first to know about new products and<br class="footer__desktop-break" /> promotions. Plus 15% discount!</p>
 
-      <div class="footer__right-col">
-        <span class="footer__col-title">GET IN TOUCH</span>
-        <a class="footer__email" [href]="'mailto:' + content().email">
-          {{ content().email }}
-        </a>
-      </div>
-    </div>
-
-    <div class="footer__lower-stage">
-      <div class="footer__giant-brand">
-        <app-brand-logo
-          [showWordmark]="true"
-          [wordmark]="content().brandName"
-          size="xl"
+      <form class="footer__form" (submit)="onSubscribe($event)">
+        <label class="footer__consent">
+          <input type="checkbox" [checked]="consented()" (change)="onConsentChange($event)" required />
+          <span>I have read and understood the privacy policy.</span>
+        </label>
+        <label class="footer__email-label" for="kora-newsletter-email">Email address</label>
+        <input
+          id="kora-newsletter-email"
+          class="footer__email-input"
+          type="email"
+          name="email"
+          placeholder="name@example.com"
+          autocomplete="email"
+          [value]="email()"
+          (input)="onEmailInput($event)"
+          required
         />
-      </div>
-
-      <div class="footer__spotlight-wrap">
-        <app-spotlight-card
-          [spotlight]="content().spotlight"
-          (exploreClicked)="onExploreSeries()"
-        />
-      </div>
-    </div>
-
-    <div class="footer__legal-bar">
-      <span class="footer__copyright">{{ content().copyright }}</span>
-      <div class="footer__legal-links">
-        @for (item of content().legalLinks; track item) {
-          <span class="footer__legal-item">{{ item }}</span>
+        <button class="footer__submit" type="submit">SUBSCRIBE</button>
+        @if (message()) {
+          <p class="footer__message" role="status">{{ message() }}</p>
         }
-      </div>
+      </form>
     </div>
   </div>
 </footer>

@@ -1,35 +1,39 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import { BrandStore } from '../../../../core/store/brand.store';
-import { ScrollStore } from '../../../../core/store/scroll.store';
-import { BrandLogoComponent } from '../../../../shared/components/brand-logo/brand-logo.component';
 import { OptimizedImageComponent } from '../../../../shared/components/optimized-image/optimized-image.component';
-import { SpotlightCardComponent } from '../../../../shared/components/spotlight-card/spotlight-card.component';
 
 @Component({
   selector: 'app-footer-section',
   standalone: true,
-  imports: [BrandLogoComponent, SpotlightCardComponent, OptimizedImageComponent],
+  imports: [OptimizedImageComponent],
   templateUrl: './footer-section.component.html',
   styleUrl: './footer-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterSectionComponent {
   private readonly brandStore = inject(BrandStore);
-  private readonly scrollStore = inject(ScrollStore);
 
   readonly isActive = input<boolean>(false);
   readonly progress = input<number>(0);
 
   protected readonly content = this.brandStore.footer;
-  protected readonly isLowBandwidth = this.brandStore.isLowBandwidth;
+  protected readonly email = signal('');
+  protected readonly consented = signal(false);
+  protected readonly message = signal('');
 
-  onNavigate(sectionIndex?: number): void {
-    if (sectionIndex !== undefined) {
-      this.scrollStore.requestScrollToSection(sectionIndex);
-    }
+  onEmailInput(event: Event): void {
+    this.email.set((event.target as HTMLInputElement).value);
+    this.message.set('');
   }
 
-  onExploreSeries(): void {
-    this.brandStore.triggerShopAction('Aero-Zero Lookbook');
+  onConsentChange(event: Event): void {
+    this.consented.set((event.target as HTMLInputElement).checked);
+    this.message.set('');
+  }
+
+  onSubscribe(event: Event): void {
+    event.preventDefault();
+    if (!this.consented() || !this.email().trim()) return;
+    this.message.set('Newsletter subscriptions are not connected yet. Please check back soon.');
   }
 }

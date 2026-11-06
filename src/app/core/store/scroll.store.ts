@@ -20,7 +20,7 @@ const INITIAL_SECTIONS: readonly SectionDescriptor[] = [
   { id: 'maximum-impact', index: 3, numberLabel: '03', codeLabel: '03 / 04', title: 'Maximum Impact' },
   { id: 'beyond-limits', index: 4, numberLabel: '04', codeLabel: '04 / 04', title: 'Beyond Limits' },
   { id: 'handball-products', index: 5, numberLabel: '05', codeLabel: '05 / 06', title: 'Handball Products' },
-  { id: 'footer', index: 6, numberLabel: '06', codeLabel: 'OX — END', title: 'Oxlando' },
+  { id: 'footer', index: 6, numberLabel: '06', codeLabel: 'KORA — END', title: 'Newsletter' },
 ];
 
 const initialState: ScrollState = {

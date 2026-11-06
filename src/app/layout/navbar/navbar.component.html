@@ -1,0 +1,93 @@
+<header
+  class="navbar"
+  [class.navbar--compact]="scrollStore.isNavbarCompact()"
+  [class.navbar--menu-open]="scrollStore.isMobileMenuOpen()"
+>
+  <div class="navbar__inner">
+    <button
+      type="button"
+      class="navbar__brand"
+      aria-label="Back to top"
+      (click)="onLogoClick()"
+    >
+      <app-brand-logo size="sm" />
+    </button>
+
+    <div class="navbar__right">
+      <nav class="navbar__links" aria-label="Primary navigation">
+        @for (item of brandStore.navItems(); track item.id) {
+          <button
+            type="button"
+            class="navbar__link"
+            [class.navbar__link--active]="brandStore.selectedCategory() === item.id"
+            (click)="onNavClick(item.id, item.targetSectionIndex)"
+          >
+            {{ item.label }}
+          </button>
+        }
+      </nav>
+
+      <button
+        type="button"
+        class="navbar__action-btn"
+        [attr.aria-expanded]="scrollStore.isMobileMenuOpen()"
+        aria-label="Toggle quick menu"
+        (click)="onToggleMenu()"
+      >
+        @if (brandStore.hasCartItems()) {
+          <span class="navbar__badge">{{ brandStore.cartCount() }}</span>
+        } @else {
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path
+              d="M7 1.5V12.5M1.5 7H12.5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        }
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile / Quick Jump Glass Drawer -->
+  @if (scrollStore.isMobileMenuOpen()) {
+    <div class="navbar__drawer" role="dialog" aria-label="Navigation Drawer">
+      <div class="navbar__drawer-content">
+        <p class="navbar__drawer-eyebrow">OXLANDO PERFORMANCE ARCHIVE</p>
+        <ul class="navbar__drawer-list">
+          @for (item of brandStore.navItems(); track item.id) {
+            <li>
+              <button
+                type="button"
+                class="navbar__drawer-item"
+                (click)="onNavClick(item.id, item.targetSectionIndex)"
+              >
+                <span class="navbar__drawer-index">0{{ item.targetSectionIndex }}</span>
+                <span class="navbar__drawer-label">{{ item.label }}</span>
+              </button>
+            </li>
+          }
+          <li>
+            <button
+              type="button"
+              class="navbar__drawer-item"
+              (click)="onNavClick('contact', 5)"
+            >
+              <span class="navbar__drawer-index">05</span>
+              <span class="navbar__drawer-label">CONTACT & LAB</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  }
+
+  <!-- Toast Feedback -->
+  @if (brandStore.activeToast(); as toastMsg) {
+    <div class="navbar__toast" role="status">
+      <span class="navbar__toast-dot"></span>
+      <span>{{ toastMsg }}</span>
+    </div>
+  }
+</header>

@@ -1,0 +1,61 @@
+.landing-shell {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--bg-deep-navy);
+
+  &__progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    z-index: 60;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+
+  &__progress-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #9ad3ff, #ffffff);
+    transform-origin: left center;
+    transition: transform 0.15s ease-out;
+  }
+
+  &__viewport {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    transition: filter 0.65s var(--ease-out-expo);
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-shell {
+    &__viewport {
+      scroll-snap-type: y proximity;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<nav class="scroll-dots" aria-label="Section navigation">
+  <div class="scroll-dots__track">
+    @for (section of scrollStore.sections(); track section.id) {
+      <button
+        type="button"
+        class="scroll-dots__item"
+        [class.scroll-dots__item--active]="scrollStore.activeSectionIndex() === section.index"
+        [attr.aria-label]="'Scroll to ' + section.title"
+        [attr.aria-current]="scrollStore.activeSectionIndex() === section.index ? 'step' : null"
+        (click)="onSelectSection(section.index)"
+      >
+        <span class="scroll-dots__tooltip">{{ section.title }}</span>
+        <span class="scroll-dots__pip"></span>
+      </button>
+    }
+  </div>
+</nav>

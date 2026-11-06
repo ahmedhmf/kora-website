@@ -1,0 +1,100 @@
+<div class="landing-shell">
+  <!-- Top Fixed Navigation -->
+  <app-navbar />
+
+  <!-- Right Floating Section Progress Dots -->
+  <app-scroll-nav-dots />
+
+  <!-- Top Subtle Scroll Progress Line -->
+  <div class="landing-shell__progress-bar" aria-hidden="true">
+    <div
+      class="landing-shell__progress-fill"
+      [style.transform]="'scaleX(' + scrollStore.scrollProgress() + ')'"
+    ></div>
+  </div>
+
+  <!-- Full-Screen Smooth Snap Scroll Viewport -->
+  <main
+    #scrollContainer
+    class="landing-shell__viewport"
+    (scroll)="onContainerScroll()"
+  >
+    <!-- Section 0: Hero -->
+    <div
+      #sectionSlot
+      class="landing-shell__section"
+      [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 0"
+      data-section-index="0"
+    >
+      <app-hero-section
+        [isActive]="isSectionRevealed(0)"
+        [progress]="getSectionProgress(0)"
+      />
+    </div>
+
+    <!-- Section 1: Release Your Inner Power -->
+    <div
+      #sectionSlot
+      class="landing-shell__section"
+      [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 1"
+      data-section-index="1"
+    >
+      <app-inner-power-section
+        [isActive]="isSectionRevealed(1)"
+        [progress]="getSectionProgress(1)"
+      />
+    </div>
+
+    <!-- Section 2: Peak Performance / Limitless Style / Next-Gen Apparel -->
+    <div
+      #sectionSlot
+      class="landing-shell__section"
+      [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 2"
+      data-section-index="2"
+    >
+      <app-peak-performance-section
+        [isActive]="isSectionRevealed(2)"
+        [progress]="getSectionProgress(2)"
+      />
+    </div>
+
+    <!-- Section 3: Optimized for Maximum Impact -->
+    <div
+      #sectionSlot
+      class="landing-shell__section"
+      [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 3"
+      data-section-index="3"
+    >
+      <app-maximum-impact-section
+        [isActive]="isSectionRevealed(3)"
+        [progress]="getSectionProgress(3)"
+      />
+    </div>
+
+    <!-- Section 4: Beyond Limits -->
+    <div
+      #sectionSlot
+      class="landing-shell__section"
+      [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 4"
+      data-section-index="4"
+    >
+      <app-beyond-limits-section
+        [isActive]="isSectionRevealed(4)"
+        [progress]="getSectionProgress(4)"
+      />
+    </div>
+
+    <!-- Section 5: Oxlando Footer -->
+    <div
+      #sectionSlot
+      class="landing-shell__section"
+      [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 5"
+      data-section-index="5"
+    >
+      <app-footer-section
+        [isActive]="isSectionRevealed(5)"
+        [progress]="getSectionProgress(5)"
+      />
+    </div>
+  </main>
+</div>

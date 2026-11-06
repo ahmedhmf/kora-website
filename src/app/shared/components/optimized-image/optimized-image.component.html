@@ -1,0 +1,38 @@
+<div
+  class="opt-img"
+  [class.opt-img--loaded]="isLoaded()"
+  [style.background]="asset().placeholderBg"
+>
+  @if (!hasError()) {
+    <picture class="opt-img__picture">
+      @if (asset().avifSrcset; as avif) {
+        <source type="image/avif" [srcset]="avif" [sizes]="asset().sizes" />
+      }
+      @if (asset().webpSrcset; as webp) {
+        <source type="image/webp" [srcset]="webp" [sizes]="asset().sizes" />
+      }
+      <!-- Mobile Portrait Art-Directed Crop -->
+      <source media="(max-width: 680px)" [srcset]="asset().mobileSrc" />
+      <!-- Tablet Crop -->
+      <source media="(max-width: 1024px)" [srcset]="asset().tabletSrc" />
+      <!-- Desktop Standard & Retina (@2x) -->
+      <source media="(min-width: 1025px)" [srcset]="desktopSrcset()" />
+
+      <img
+        class="opt-img__element"
+        [class]="imgClass()"
+        [src]="asset().fallbackSrc"
+        [alt]="effectiveAlt()"
+        [attr.aria-hidden]="decorative() ? 'true' : null"
+        [width]="asset().width"
+        [height]="asset().height"
+        [style.object-position]="asset().objectPosition || 'center'"
+        [attr.loading]="asset().priority ? 'eager' : 'lazy'"
+        [attr.fetchpriority]="asset().priority ? 'high' : 'auto'"
+        decoding="async"
+        (load)="onImageLoad()"
+        (error)="onImageError()"
+      />
+    </picture>
+  }
+</div>

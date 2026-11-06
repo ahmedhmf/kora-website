@@ -1,1 +1,83 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Core Icy Slate & Metallic Palette matching the reference design */
+  --bg-deep-navy: #0e1a26;
+  --bg-slate-dark: #1d3144;
+  --bg-slate-mid: #3d5973;
+  --bg-slate-steel: #6887a3;
+  --bg-ice-mid: #96b2c8;
+  --bg-ice-light: #bfd2e0;
+  --bg-ice-mist: #dce7ef;
+  --bg-ice-white: #eef4f8;
+
+  /* Text & Accent Colors */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.82);
+  --text-muted: rgba(255, 255, 255, 0.62);
+  --text-dark: #102030;
+
+  /* Glassmorphism & Borders */
+  --glass-bg: rgba(255, 255, 255, 0.16);
+  --glass-bg-dark: rgba(16, 32, 48, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.28);
+  --orbital-line: rgba(255, 255, 255, 0.22);
+  --orbital-dot: #ffffff;
+
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Transitions & Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-slate-dark);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  selection-background-color: rgba(255, 255, 255, 0.25);
+}
+
+::selection {
+  background: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}

@@ -1,0 +1,39 @@
+.orbital {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+  opacity: 0.35;
+  transform: scale(1.04);
+  transition:
+    opacity 1.2s var(--ease-out-expo),
+    transform 1.4s var(--ease-out-expo);
+
+  &--active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &__svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  &__node {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+    animation: pulseNode 4s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes pulseNode {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}

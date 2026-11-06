@@ -1,0 +1,50 @@
+<section
+  class="impact"
+  [class.impact--active]="isActive()"
+  aria-label="Optimized for Maximum Impact"
+>
+  <app-section-meta
+    [codeLabel]="content().sectionCode"
+    [numberLabel]="content().sectionNumber"
+    [isActive]="isActive()"
+    [darkText]="true"
+  />
+
+  <div class="impact__backdrop">
+    <app-optimized-image
+      class="impact__bg-image"
+      [asset]="content().responsiveBackdrop"
+    />
+    <div class="impact__icy-wash"></div>
+  </div>
+
+  <div class="impact__stage">
+    <div class="impact__frame" [style.transform]="frameTransform()">
+      <div class="impact__frame-gradient"></div>
+
+      <div class="impact__top-left">
+        <h2 class="impact__title impact__title--left">
+          <span class="impact__title-line">{{ content().topTitleLine1 }}</span>
+          <span class="impact__title-line">{{ content().topTitleLine2 }}</span>
+        </h2>
+      </div>
+
+      <div class="impact__bottom-row">
+        <div class="impact__cta">
+          <app-pill-button
+            [label]="content().ctaLabel"
+            variant="frosted"
+            (actionTriggered)="onShopNow()"
+          />
+        </div>
+
+        <div class="impact__bottom-right">
+          <h2 class="impact__title impact__title--right">
+            <span class="impact__title-line">{{ content().bottomTitleLine1 }}</span>
+            <span class="impact__title-line">{{ content().bottomTitleLine2 }}</span>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

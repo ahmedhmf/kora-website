@@ -1,0 +1,38 @@
+<section
+  class="hero"
+  [class.hero--active]="isActive()"
+  aria-label="Engineered for the Unstoppable"
+>
+  <div class="hero__backdrop" [style.transform]="parallaxTransform()">
+    <div class="hero__studio-glow"></div>
+    <app-optimized-image
+      class="hero__image"
+      [asset]="content().responsiveBg"
+    />
+    <div class="hero__color-grade"></div>
+    <div class="hero__bottom-mist"></div>
+  </div>
+
+  <app-orbital-graphic variant="hero" [isActive]="isActive()" />
+
+  <div class="hero__container">
+    <aside class="hero__manifesto">
+      <p class="hero__manifesto-text">{{ content().topRightCopy }}</p>
+    </aside>
+
+    <div class="hero__headline-group">
+      <h1 class="hero__title">
+        <span class="hero__title-line hero__title-line--1">{{ content().titleLine1 }}</span>
+        <span class="hero__title-line hero__title-line--2">{{ content().titleLine2 }}</span>
+      </h1>
+
+      <div class="hero__cta-wrap">
+        <app-pill-button
+          [label]="content().ctaLabel"
+          variant="frosted"
+          (actionTriggered)="onShopNow()"
+        />
+      </div>
+    </div>
+  </div>
+</section>

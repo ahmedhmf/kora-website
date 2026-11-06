@@ -1,0 +1,49 @@
+<section
+  class="inner-power"
+  [class.inner-power--active]="isActive()"
+  aria-label="Release Your Inner Power"
+>
+  <app-section-meta
+    [codeLabel]="content().sectionCode"
+    [numberLabel]="content().sectionNumber"
+    [isActive]="isActive()"
+  />
+
+  <div class="inner-power__split">
+    <div class="inner-power__left">
+      <div class="inner-power__image-wrap" [style.transform]="imageTransform()">
+        <app-optimized-image
+          class="inner-power__image"
+          [asset]="content().responsiveLeftImage"
+        />
+        @if (!isLowBandwidth()) {
+          <app-optimized-image
+            class="inner-power__image inner-power__image--ghost"
+            [asset]="content().responsiveLeftImage"
+            [decorative]="true"
+          />
+        }
+      </div>
+      <div class="inner-power__left-tint"></div>
+    </div>
+
+    <div class="inner-power__right">
+      <div class="inner-power__radial-glow"></div>
+      <app-orbital-graphic variant="split-right" [isActive]="isActive()" />
+    </div>
+  </div>
+
+  <div class="inner-power__overlay">
+    <h2 class="inner-power__headline">
+      <span class="inner-power__line inner-power__line--1">{{ content().titleLine1 }}</span>
+      <span class="inner-power__line inner-power__line--2">{{ content().titleLine2 }}</span>
+      <span class="inner-power__line inner-power__line--3">{{ content().titleLine3 }}</span>
+    </h2>
+
+    <article class="inner-power__card">
+      <p class="inner-power__card-text">{{ content().cardDescription }}</p>
+    </article>
+  </div>
+
+  <div class="inner-power__seam" aria-hidden="true"></div>
+</section>

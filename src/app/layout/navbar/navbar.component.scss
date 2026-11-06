@@ -23,3 +23,10 @@
     height: auto;
   }
 }
+
+@media (min-width: 2200px) {
+  .navbar {
+    padding: 3vh 5.8vw;
+    &__logo { width: clamp(145px, 6.3vw, 250px); }
+  }
+}

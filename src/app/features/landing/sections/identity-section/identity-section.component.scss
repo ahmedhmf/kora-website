@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100dvh, var(--kora-min-section-height));
   overflow: hidden;
   background: #f0f0f0;
   color: #050505;
@@ -41,7 +41,7 @@
     z-index: 2;
     width: 50%;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: max(100dvh, var(--kora-min-section-height));
     padding: clamp(5.5rem, 12.5vh, 9rem) clamp(1.25rem, 7.1vw, 9rem);
     display: flex;
     flex-direction: column;
@@ -63,7 +63,7 @@
   &__headline-line {
     display: block;
     font-family: var(--font-display);
-    font-size: clamp(2.7rem, 4.7vw, 6rem);
+    font-size: clamp(2.7rem, 4.7vw, 11rem);
     font-weight: 500;
     line-height: 0.96;
     letter-spacing: -0.073em;
@@ -77,7 +77,7 @@
   &__statement-row:nth-child(3) .peak__headline-line { transition-delay: 0.24s; }
 
   &__annotation {
-    font-size: clamp(0.7rem, 1.03vw, 1.15rem);
+    font-size: clamp(0.75rem, 1.03vw, 1.8rem);
     line-height: 1.1;
     letter-spacing: -0.025em;
     opacity: 0;
@@ -93,18 +93,27 @@
   }
 }
 
+@media (min-width: 769px) and (max-width: 1100px) {
+  .peak {
+    &__split { grid-template-columns: 55% 45%; }
+    &__content { width: 55%; padding-inline: 4vw; }
+    &__headline-line { font-size: clamp(2rem, 3.8vw, 3.7rem); }
+  }
+}
+
 @media (max-width: 768px) {
   .peak {
-    &__split { grid-template-columns: 1fr; grid-template-rows: 52% 48%; }
+    &__split { grid-template-columns: 1fr; grid-template-rows: 55% 45%; }
     &__content {
       width: 100%;
-      min-height: 52vh;
-      min-height: 52dvh;
-      padding: 5.5rem 1.25rem 1rem;
+      min-height: 55vh;
+      min-height: 55dvh;
+      padding: clamp(4.2rem, 10vh, 6rem) clamp(1rem, 5vw, 2rem) 1rem;
     }
-    &__statement { padding-top: 2rem; }
-    &__statement-row { margin-bottom: 0.5rem; }
-    &__headline-line { font-size: clamp(2.1rem, 8.5vw, 4.5rem); }
-    &__annotation { font-size: 0.68rem; }
+    &__statement { padding-top: 0.5rem; }
+    &__statement-row { margin-bottom: clamp(0.25rem, 1vh, 0.5rem); }
+    &__headline-line { font-size: clamp(1.7rem, 8.5vw, 4.5rem); white-space: normal; overflow-wrap: anywhere; }
+    &__annotation { font-size: clamp(0.59rem, 2.5vw, 0.75rem); }
+    &__portrait { object-position: center 42%; }
   }
 }

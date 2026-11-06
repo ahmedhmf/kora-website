@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100dvh, var(--kora-min-section-height));
   overflow: hidden;
   background: #efefef;
   color: #050505;
@@ -26,7 +26,7 @@
     z-index: 2;
     width: 100%;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: max(100dvh, var(--kora-min-section-height));
     padding: clamp(5.5rem, 12vh, 9rem) clamp(1.25rem, 7.1vw, 9rem);
   }
 
@@ -41,7 +41,7 @@
 
   &__content {
     position: absolute;
-    width: min(42%, 760px);
+    width: min(43%, 1600px);
     right: clamp(1.25rem, 4.2vw, 5.5rem);
     top: 48%;
     transform: translateY(-10%);
@@ -49,7 +49,7 @@
 
   &__headline {
     font-family: var(--font-display);
-    font-size: clamp(2.8rem, 4.7vw, 6.1rem);
+    font-size: clamp(2.8rem, 4.7vw, 10rem);
     font-weight: 500;
     line-height: 0.91;
     letter-spacing: -0.075em;
@@ -68,7 +68,7 @@
   &__description {
     max-width: 760px;
     margin-top: 0.85rem;
-    font-size: clamp(0.72rem, 0.9vw, 1rem);
+    font-size: clamp(0.78rem, 0.9vw, 1.5rem);
     line-height: 1.45;
     opacity: 0;
     transform: translateY(22px);
@@ -85,16 +85,23 @@
 
 @media (max-width: 768px) {
   .dna {
-    &__image { object-position: 35% center; opacity: 0.66; }
-    &__overlay { padding: 6rem 1.25rem 3rem; }
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 44% 0 0;
+      background: linear-gradient(to bottom, transparent, rgba(239,239,239,.92) 32%, #efefef 80%);
+      pointer-events: none;
+    }
+    &__image { object-position: 26% center; opacity: 0.8; }
+    &__overlay { z-index: 3; padding: 5.5rem clamp(1rem, 5vw, 2rem) 3rem; }
     &__content {
-      width: calc(100% - 2.5rem);
-      right: 1.25rem;
+      width: calc(100% - 2rem);
+      right: 1rem;
       top: auto;
-      bottom: clamp(4rem, 12vh, 8rem);
+      bottom: clamp(2.5rem, 9vh, 6rem);
       transform: none;
     }
-    &__headline { font-size: clamp(2.45rem, 9.8vw, 4.5rem); }
-    &__description { max-width: 32rem; font-size: 0.78rem; }
+    &__headline { font-size: clamp(2.1rem, 8.8vw, 4.5rem); }
+    &__description { max-width: 32rem; font-size: clamp(0.73rem, 2.4vw, 0.9rem); }
   }
 }

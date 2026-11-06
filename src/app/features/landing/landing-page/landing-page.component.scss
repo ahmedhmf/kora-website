@@ -45,7 +45,7 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: max(100dvh, var(--kora-min-section-height));
     scroll-snap-align: start;
     scroll-snap-stop: always;
     transition: filter 0.65s var(--ease-out-expo);
@@ -58,4 +58,8 @@
       scroll-snap-type: y proximity;
     }
   }
+}
+
+@media (max-height: 650px) {
+  .landing-shell__viewport { scroll-snap-type: y proximity; }
 }

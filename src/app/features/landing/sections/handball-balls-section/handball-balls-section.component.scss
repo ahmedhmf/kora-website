@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100dvh, var(--kora-min-section-height));
   overflow: hidden;
   background: #dedede;
   color: #080808;
@@ -28,7 +28,7 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: max(100dvh, var(--kora-min-section-height));
     padding: clamp(5.5rem, 12.5vh, 9rem) clamp(1.25rem, 7.1vw, 9rem) clamp(4rem, 12vh, 9rem);
   }
 
@@ -42,7 +42,7 @@
   }
 
   &__features {
-    width: min(570px, 100%);
+    width: min(34vw, 1050px);
     margin-left: clamp(-3rem, -2.5vw, 0px);
     opacity: 0;
     transform: translateY(24px);
@@ -52,15 +52,15 @@
   &__features li {
     display: flex;
     align-items: center;
-    min-height: 26px;
-    font-size: clamp(0.72rem, 0.85vw, 0.94rem);
+    min-height: clamp(26px, 1.5vw, 54px);
+    font-size: clamp(0.72rem, 0.85vw, 1.8rem);
     line-height: 1.25;
   }
 
   &__features li::before {
     content: '';
-    flex: 0 0 18px;
-    height: 15px;
+    flex: 0 0 clamp(18px, 1vw, 35px);
+    height: clamp(15px, 0.9vw, 30px);
     margin-right: 4px;
     background: url('/assets/kora/Logomark.svg') center / contain no-repeat;
   }
@@ -75,15 +75,15 @@
 
 @media (max-width: 768px) {
   .handball-balls {
-    &__image { object-position: 55% center; }
-    &__content { padding: 5.5rem 1.25rem 4rem; }
+    &__image { object-position: 53% 40%; }
+    &__content { padding: 5.5rem clamp(1rem, 5vw, 2rem) 3rem; }
     &__features {
       width: 100%;
       margin-left: 0;
-      padding: 0.5rem;
-      background: rgba(245,245,245,0.76);
+      padding: 0.55rem 0.65rem;
+      background: rgba(245,245,245,0.86);
       backdrop-filter: blur(4px);
     }
-    &__features li { font-size: 0.7rem; min-height: 30px; }
+    &__features li { font-size: clamp(0.7rem, 2.9vw, 0.9rem); min-height: 32px; }
   }
 }

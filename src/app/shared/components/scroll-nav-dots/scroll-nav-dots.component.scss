@@ -80,6 +80,17 @@
   }
 }
 
+@media (min-width: 2200px) {
+  .scroll-dots {
+    right: 2vw;
+    &__track { gap: 1rem; padding: 1rem 0.6rem; }
+    &__item { width: 30px; height: 30px; }
+    &__pip { width: 8px; height: 8px; }
+    &__item--active .scroll-dots__pip { height: 22px; }
+    &__tooltip { font-size: 0.85rem; }
+  }
+}
+
 @media (max-width: 768px) {
   .scroll-dots {
     display: none;

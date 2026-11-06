@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100dvh, var(--kora-min-section-height));
   overflow: hidden;
   background: #dedede;
   color: #080808;
@@ -39,12 +39,12 @@
     align-items: flex-end;
     width: 100%;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: max(100dvh, var(--kora-min-section-height));
     padding: clamp(5.5rem, 9vh, 7.5rem) clamp(1.25rem, 5.8vw, 7rem) clamp(2.5rem, 25vh, 17rem);
   }
 
   &__headline-group {
-    width: min(100%, 780px);
+    width: min(100%, 48vw, 1200px);
     opacity: 0;
     transform: translateY(36px);
     transition: opacity 0.95s var(--ease-out-expo) 0.12s, transform 0.95s var(--ease-out-expo) 0.12s;
@@ -52,7 +52,7 @@
 
   &__title {
     font-family: var(--font-display);
-    font-size: clamp(3.3rem, 5vw, 6.4rem);
+    font-size: clamp(3.3rem, 5vw, 10rem);
     font-weight: 500;
     letter-spacing: -0.065em;
     line-height: 0.97;
@@ -62,7 +62,7 @@
   &__subtitle {
     margin-top: 0.12em;
     font-family: var(--font-display);
-    font-size: clamp(1rem, 1.8vw, 2rem);
+    font-size: clamp(1rem, 1.8vw, 3.4rem);
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.035em;
@@ -70,7 +70,7 @@
 
   &__description {
     margin-top: 0.65rem;
-    font-size: clamp(0.58rem, 0.85vw, 0.9rem);
+    font-size: clamp(0.7rem, 0.85vw, 1.5rem);
     font-style: italic;
     line-height: 1.1;
   }
@@ -83,11 +83,16 @@
 
 @media (max-width: 768px) {
   .hero {
-    &__image { object-position: 62% center; }
+    &__image { object-position: 59% center; }
     &__grid { inset-inline-start: 40%; }
-    &__container { padding: 5.5rem 1.25rem clamp(6rem, 19vh, 11rem); }
-    &__title { font-size: clamp(2.35rem, 10vw, 4.25rem); }
+    &__container { padding: 5.5rem clamp(1rem, 5vw, 2rem) clamp(5rem, 16vh, 10rem); }
+    &__headline-group { width: min(100%, 34rem); }
+    &__title { font-size: clamp(2rem, 9.5vw, 4.25rem); white-space: normal; }
     &__subtitle { max-width: 22rem; font-size: clamp(0.9rem, 3.7vw, 1.3rem); }
-    &__description { max-width: 19rem; font-size: 0.64rem; }
+    &__description { max-width: 19rem; font-size: 0.68rem; }
   }
+}
+
+@media (min-width: 2200px) {
+  .hero__container { padding-left: 6vw; padding-bottom: 20vh; }
 }

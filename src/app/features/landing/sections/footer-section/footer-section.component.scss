@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100dvh, var(--kora-min-section-height));
   overflow: hidden;
   background: #f0f0f0;
   color: #fff;
@@ -14,12 +14,12 @@
     place-items: center;
     width: 100%;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: max(100dvh, var(--kora-min-section-height));
     padding: clamp(5.5rem, 9vh, 7rem) clamp(0.75rem, 3vw, 2.5rem);
   }
 
   &__newsletter {
-    width: min(100%, 1460px);
+    width: min(100%, 3600px);
     padding: clamp(2.5rem, 4.5vw, 4.5rem) clamp(1.25rem, 5vw, 6rem);
     border-radius: clamp(26px, 3vw, 44px);
     background: linear-gradient(105deg, #b318e0 0%, #6476f5 48%, #05d6ec 100%);
@@ -32,7 +32,7 @@
 
   &__headline {
     font-family: var(--font-display);
-    font-size: clamp(1.7rem, 3.1vw, 3.4rem);
+    font-size: clamp(1.7rem, 3.1vw, 6rem);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.035em;
@@ -40,7 +40,7 @@
 
   &__intro {
     margin-top: clamp(1.5rem, 3vw, 3rem);
-    font-size: clamp(1rem, 1.65vw, 1.6rem);
+    font-size: clamp(1rem, 1.65vw, 3rem);
     line-height: 1.45;
   }
 
@@ -48,7 +48,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: min(100%, 500px);
+    width: min(100%, 1000px);
     margin: clamp(1.6rem, 3vw, 3rem) auto 0;
   }
 
@@ -57,7 +57,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-    font-size: clamp(0.7rem, 1.05vw, 1rem);
+    font-size: clamp(0.7rem, 1.05vw, 1.6rem);
     cursor: pointer;
     text-align: left;
   }
@@ -83,7 +83,7 @@
     border-bottom: 1px solid rgba(255,255,255,.9);
     border-radius: 0;
     color: #fff;
-    font-size: clamp(0.8rem, 1.05vw, 1rem);
+    font-size: clamp(0.8rem, 1.05vw, 1.6rem);
     outline-offset: 4px;
   }
 
@@ -113,10 +113,12 @@
 
 @media (max-width: 768px) {
   .footer {
-    &__newsletter { padding: 2.5rem 1.25rem; }
+    &__container { padding: 3rem clamp(0.75rem, 3vw, 1.5rem); }
+    &__newsletter { padding: clamp(2rem, 7vw, 3rem) clamp(1rem, 5vw, 2rem); border-radius: 26px; }
     &__headline { font-size: clamp(1.7rem, 6.3vw, 2.8rem); }
     &__desktop-break { display: none; }
     &__intro { font-size: 1rem; }
     &__form { margin-top: 2rem; }
+    &__submit { min-height: 48px; }
   }
 }

@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: max(100dvh, var(--kora-min-section-height));
   overflow: hidden;
   background: #f0f0f0;
   color: #080808;
@@ -29,7 +29,7 @@
     justify-content: space-between;
     width: 100%;
     min-height: 100vh;
-    min-height: 100dvh;
+    min-height: max(100dvh, var(--kora-min-section-height));
     padding: clamp(5.5rem, 12.5vh, 9rem) clamp(1.25rem, 7.1vw, 9rem) clamp(4rem, 12vh, 9rem);
   }
 
@@ -43,7 +43,7 @@
   }
 
   &__features {
-    width: min(315px, 100%);
+    width: min(22vw, 650px);
     margin-left: clamp(-3rem, -2.5vw, 0px);
     opacity: 0;
     transform: translateY(24px);
@@ -53,9 +53,9 @@
   &__features li {
     display: flex;
     align-items: center;
-    min-height: 26px;
+    min-height: clamp(26px, 1.5vw, 54px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.14);
-    font-size: clamp(0.75rem, 0.86vw, 0.95rem);
+    font-size: clamp(0.75rem, 0.86vw, 1.8rem);
     line-height: 1.25;
     white-space: nowrap;
   }
@@ -63,8 +63,8 @@
   &__features li::before {
     content: '';
     display: inline-block;
-    flex: 0 0 18px;
-    height: 15px;
+    flex: 0 0 clamp(18px, 1vw, 35px);
+    height: clamp(15px, 0.9vw, 30px);
     margin-right: 4px;
     background: url('/assets/kora/Logomark.svg') center / contain no-repeat;
   }
@@ -79,14 +79,15 @@
 
 @media (max-width: 768px) {
   .impact {
-    &__bg-image { object-position: 53% center; }
-    &__content { padding: 5.5rem 1.25rem 4rem; }
+    &__bg-image { object-position: 51% 40%; }
+    &__content { padding: 5.5rem clamp(1rem, 5vw, 2rem) 3rem; }
     &__features {
       margin-left: 0;
-      width: min(310px, 100%);
-      padding: 0.5rem;
-      background: rgba(245,245,245,0.72);
+      width: min(360px, 100%);
+      padding: 0.55rem 0.65rem;
+      background: rgba(245,245,245,0.86);
       backdrop-filter: blur(4px);
     }
+    &__features li { white-space: normal; font-size: clamp(0.7rem, 2.9vw, 0.9rem); min-height: 30px; }
   }
 }

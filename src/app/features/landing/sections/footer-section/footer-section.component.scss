@@ -45,7 +45,14 @@
   &__details address { display: flex; flex-direction: column; font-size: clamp(1rem, 1.25vw, 1.5rem); line-height: 1.15; font-style: italic; color: #686868; margin-top: 3rem; }
   &__details address span:not(:first-child) { margin-top: 1.25rem; }
   &__details a:hover { color: #151515; }
-  &__social { font-size: clamp(1.8rem, 2.5vw, 2.25rem); margin-top: auto; }
+  &__social { display: flex; align-items: center; gap: clamp(.65rem, 1.1vw, 1.4rem); margin-top: auto; }
+  &__social a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border-radius: 6px; transition: transform .2s ease; }
+  &__social a:hover { transform: translateY(-3px); }
+  &__social a:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+  &__social img { display: block; object-fit: contain; }
+  &__social a:first-child img { width: 58px; height: 58px; }
+  &__social a:nth-child(2) img { width: 36px; height: 36px; }
+  &__social a:last-child img { width: 26px; height: 25px; }
 }
 @media (max-width: 768px) {
   .footer {

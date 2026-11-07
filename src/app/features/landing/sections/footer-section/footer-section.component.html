@@ -1,4 +1,18 @@
-<footer id="contact" class="footer" [class.footer--active]="isActive()" aria-label="Contact KORA">
+<footer id="contact" class="footer" [class.footer--active]="isActive()" aria-label="KORA newsletter and contact">
+  <div id="newsletter" class="footer__newsletter">
+    <h2 class="footer__headline">STAY INFORMED AND SAVE MONEY!</h2>
+    <p class="footer__intro">Be the first to know about new products and<br class="footer__desktop-break" /> promotions. Plus 15% discount!</p>
+    <form class="footer__signup-form" (submit)="onSubscribe($event)">
+      <label class="footer__consent">
+        <input type="checkbox" [checked]="consented()" (change)="onConsentChange($event)" required />
+        <span>I have read and understood the privacy policy.</span>
+      </label>
+      <label class="footer__email-label" for="kora-newsletter-email">Email address</label>
+      <input id="kora-newsletter-email" class="footer__email-input" type="email" name="newsletter-email" placeholder="name@example.com" autocomplete="email" [value]="newsletterEmail()" (input)="onNewsletterEmailInput($event)" required />
+      <button class="footer__subscribe" type="submit">SUBSCRIBE</button>
+      @if (newsletterStatus()) { <p class="footer__signup-status" role="status">{{ newsletterStatus() }}</p> }
+    </form>
+  </div>
   <div class="footer__panel">
     <form class="footer__form" (submit)="onContact($event)">
       <label for="kora-contact-name">Full Name</label>

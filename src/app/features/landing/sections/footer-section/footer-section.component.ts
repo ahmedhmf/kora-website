@@ -14,6 +14,25 @@ export class FooterSectionComponent {
   protected readonly email = signal('');
   protected readonly contactMessage = signal('');
   protected readonly status = signal('');
+  protected readonly newsletterEmail = signal('');
+  protected readonly consented = signal(false);
+  protected readonly newsletterStatus = signal('');
+
+  protected onNewsletterEmailInput(event: Event): void {
+    this.newsletterEmail.set((event.target as HTMLInputElement).value);
+    this.newsletterStatus.set('');
+  }
+
+  protected onConsentChange(event: Event): void {
+    this.consented.set((event.target as HTMLInputElement).checked);
+    this.newsletterStatus.set('');
+  }
+
+  protected onSubscribe(event: Event): void {
+    event.preventDefault();
+    if (!this.consented() || !this.newsletterEmail().trim()) return;
+    this.newsletterStatus.set('Newsletter subscriptions are not connected yet. Please check back soon.');
+  }
 
   protected onFieldInput(event: Event, field: 'name' | 'email' | 'message'): void {
     const value = (event.target as HTMLInputElement | HTMLTextAreaElement).value;

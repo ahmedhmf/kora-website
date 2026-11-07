@@ -13,7 +13,7 @@
     ></div>
   </div>
 
-  <!-- A brief red chapter marker unifies the seven cinematic reveals. -->
+  <!-- A brief red chapter marker unifies the eight cinematic reveals. -->
   @for (chapter of [scrollStore.activeSectionIndex()]; track chapter) {
     @if (chapter > 0) {
       <div class="landing-shell__chapter-cue" aria-hidden="true"></div>
@@ -91,29 +91,42 @@
       />
     </div>
 
-    <!-- Section 5: Handball Balls -->
+    <!-- Section 5: Handball technology -->
     <div
       #sectionSlot
       class="landing-shell__section"
       [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 5"
       data-section-index="5"
     >
-      <app-handball-balls-section
+      <app-handball-technology-section
         [isActive]="isSectionRevealed(5)"
         [progress]="getSectionProgress(5)"
       />
     </div>
 
-    <!-- Section 6: Footer / Newsletter -->
+    <!-- Section 6: Handball Balls -->
     <div
       #sectionSlot
       class="landing-shell__section"
       [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 6"
       data-section-index="6"
     >
-      <app-footer-section
+      <app-handball-balls-section
         [isActive]="isSectionRevealed(6)"
         [progress]="getSectionProgress(6)"
+      />
+    </div>
+
+    <!-- Section 7: Contact footer -->
+    <div
+      #sectionSlot
+      class="landing-shell__section"
+      [class.landing-shell__section--current]="scrollStore.activeSectionIndex() === 7"
+      data-section-index="7"
+    >
+      <app-footer-section
+        [isActive]="isSectionRevealed(7)"
+        [progress]="getSectionProgress(7)"
       />
     </div>
   </main>

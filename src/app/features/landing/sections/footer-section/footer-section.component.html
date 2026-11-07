@@ -1,37 +1,25 @@
-<footer id="newsletter" class="footer" [class.footer--active]="isActive()" aria-label="KORA newsletter">
-  <div class="footer__container">
-    <div class="footer__newsletter">
-      <h2 class="footer__headline">STAY INFORMED AND SAVE MONEY!</h2>
-      <p class="footer__intro">Be the first to know about new products and<br class="footer__desktop-break" /> promotions. Plus 15% discount!</p>
-
-      <form class="footer__form" (submit)="onSubscribe($event)">
-        <label class="footer__consent">
-          <input type="checkbox" [checked]="consented()" (change)="onConsentChange($event)" required />
-          <span>I have read and understood the privacy policy.</span>
-        </label>
-        <label class="footer__email-label" for="kora-newsletter-email">Email address</label>
-        <input
-          id="kora-newsletter-email"
-          class="footer__email-input"
-          type="email"
-          name="email"
-          placeholder="name@example.com"
-          autocomplete="email"
-          [value]="email()"
-          (input)="onEmailInput($event)"
-          required
-        />
-        <button class="footer__submit" type="submit">SUBSCRIBE</button>
-        @if (message()) {
-          <p class="footer__message" role="status">{{ message() }}</p>
-        }
-      </form>
-      <nav class="footer__discover" aria-label="Explore KORA">
-        <a routerLink="/about">About KORA</a>
-        <a routerLink="/footballs">Footballs</a>
-        <a routerLink="/handballs">Handballs</a>
-        <a routerLink="/technology">Technology</a>
-      </nav>
+<footer id="contact" class="footer" [class.footer--active]="isActive()" aria-label="Contact KORA">
+  <div class="footer__panel">
+    <form class="footer__form" (submit)="onContact($event)">
+      <label for="kora-contact-name">Full Name</label>
+      <input id="kora-contact-name" type="text" name="name" autocomplete="name" [value]="name()" (input)="onFieldInput($event, 'name')" required />
+      <label for="kora-contact-email">Email</label>
+      <input id="kora-contact-email" type="email" name="email" autocomplete="email" [value]="email()" (input)="onFieldInput($event, 'email')" required />
+      <label for="kora-contact-message">Message</label>
+      <textarea id="kora-contact-message" name="message" rows="6" [value]="contactMessage()" (input)="onFieldInput($event, 'message')" required></textarea>
+      <button type="submit">Send</button>
+      @if (status()) { <p class="footer__status" role="status">{{ status() }}</p> }
+    </form>
+    <div class="footer__details">
+      <img src="/assets/kora/Logo.svg" class="footer__logo" alt="KORA" loading="lazy" />
+      <address>
+        <a href="mailto:info@korafc.com">info&#64;korafc.com</a>
+        <span>Germany Office.</span>
+        <a href="tel:+4917632249421">+49 176 322 49421</a>
+        <span>Egypt Office</span>
+        <a href="tel:+201020138899">+20 102 013 8899</a>
+      </address>
+      <span class="footer__social" aria-label="KORA social handle">@</span>
     </div>
   </div>
 </footer>

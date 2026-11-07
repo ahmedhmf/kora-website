@@ -14,6 +14,7 @@ import { ScrollStore } from '../../../core/store/scroll.store';
 import { NavbarComponent } from '../../../layout/navbar/navbar.component';
 import { ScrollNavDotsComponent } from '../../../shared/components/scroll-nav-dots/scroll-nav-dots.component';
 import { HandballSectionComponent } from '../sections/handball-section/handball-section.component';
+import { HandballTechnologySectionComponent } from '../sections/handball-technology-section/handball-technology-section.component';
 import { FooterSectionComponent } from '../sections/footer-section/footer-section.component';
 import { HandballBallsSectionComponent } from '../sections/handball-balls-section/handball-balls-section.component';
 import { HeroSectionComponent } from '../sections/hero-section/hero-section.component';
@@ -32,6 +33,7 @@ import { IdentitySectionComponent } from '../sections/identity-section/identity-
     IdentitySectionComponent,
     FootballsSectionComponent,
     HandballSectionComponent,
+    HandballTechnologySectionComponent,
     HandballBallsSectionComponent,
     FooterSectionComponent,
   ],

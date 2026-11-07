@@ -1,36 +1,33 @@
 import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer-section',
   standalone: true,
-  imports: [RouterLink],
   templateUrl: './footer-section.component.html',
   styleUrl: './footer-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterSectionComponent {
-
-  readonly isActive = input<boolean>(false);
-  readonly progress = input<number>(0);
-
+  readonly isActive = input(false);
+  readonly progress = input(0);
+  protected readonly name = signal('');
   protected readonly email = signal('');
-  protected readonly consented = signal(false);
-  protected readonly message = signal('');
+  protected readonly contactMessage = signal('');
+  protected readonly status = signal('');
 
-  onEmailInput(event: Event): void {
-    this.email.set((event.target as HTMLInputElement).value);
-    this.message.set('');
+  protected onFieldInput(event: Event, field: 'name' | 'email' | 'message'): void {
+    const value = (event.target as HTMLInputElement | HTMLTextAreaElement).value;
+    if (field === 'name') this.name.set(value);
+    if (field === 'email') this.email.set(value);
+    if (field === 'message') this.contactMessage.set(value);
+    this.status.set('');
   }
 
-  onConsentChange(event: Event): void {
-    this.consented.set((event.target as HTMLInputElement).checked);
-    this.message.set('');
-  }
-
-  onSubscribe(event: Event): void {
+  protected onContact(event: Event): void {
     event.preventDefault();
-    if (!this.consented() || !this.email().trim()) return;
-    this.message.set('Newsletter subscriptions are not connected yet. Please check back soon.');
+    const subject = encodeURIComponent(`KORA website enquiry from ${this.name().trim()}`);
+    const body = encodeURIComponent(`Name: ${this.name().trim()}\nEmail: ${this.email().trim()}\n\n${this.contactMessage().trim()}`);
+    this.status.set('Opening your email app to send the message.');
+    window.location.href = `mailto:info@korafc.com?subject=${subject}&body=${body}`;
   }
 }

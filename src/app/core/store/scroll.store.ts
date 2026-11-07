@@ -22,15 +22,16 @@ const INITIAL_SECTIONS: readonly SectionDescriptor[] = [
   { id: 'identity', index: 2, title: 'Identity' },
   { id: 'footballs', index: 3, title: 'Footballs' },
   { id: 'handball', index: 4, title: 'Handball' },
-  { id: 'handball-balls', index: 5, title: 'Handball Balls' },
-  { id: 'footer', index: 6, title: 'Footer' },
+  { id: 'handball-technology', index: 5, title: 'Handball Technology' },
+  { id: 'handball-balls', index: 6, title: 'Handball Balls' },
+  { id: 'footer', index: 7, title: 'Contact' },
 ];
 
 const initialState: ScrollState = {
   sections: INITIAL_SECTIONS,
   activeSectionIndex: 0,
   scrollProgress: 0,
-  sectionProgressMap: { 0: 1, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 },
+  sectionProgressMap: { 0: 1, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0 },
   visitedIndices: [0],
   pendingScrollTarget: null,
 };

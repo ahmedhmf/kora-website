@@ -2,7 +2,7 @@
   width: 100%; min-height: 100vh; min-height: max(100dvh, var(--kora-min-section-height));
   display: flex; flex-direction: column; align-items: center; gap: clamp(2rem, 5vh, 5rem);
   padding: clamp(3rem, 6vh, 5rem) clamp(.75rem, 2vw, 2.5rem) 0;
-  background: #e6e6e6; color: #111;
+  background: #dedede; color: #111;
   &__newsletter {
     width: 100%;
     min-height: clamp(390px, 52vh, 620px);
@@ -28,7 +28,7 @@
   &__subscribe:hover { background: #303030; transform: translateY(-2px); }
   &__subscribe:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
   &__signup-status { margin-top: .8rem; font-size: .85rem; }
-  &__panel { width: 100%; min-height: 580px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 9vw, 12rem); padding: clamp(3rem, 6vh, 6rem) clamp(1.25rem, 4vw, 6rem); background: linear-gradient(179.8deg, #e6e6e6 40%, #c5c5c5 140%); opacity: 0; transform: translateY(32px); transition: opacity 1.1s var(--ease-out-expo) .15s, transform 1.1s var(--ease-out-expo) .15s; }
+  &__panel { width: 100%; min-height: 580px; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 9vw, 12rem); padding: clamp(3rem, 6vh, 6rem) clamp(1.25rem, 4vw, 6rem); background: #dedede; opacity: 0; transform: translateY(32px); transition: opacity 1.1s var(--ease-out-expo) .15s, transform 1.1s var(--ease-out-expo) .15s; }
   &--active &__panel { opacity: 1; transform: none; }
   &__form { display: flex; flex-direction: column; align-items: stretch; max-width: 623px; }
   &__form label { font-size: clamp(1rem, 1.25vw, 1.5rem); color: #777; line-height: 1.4; }

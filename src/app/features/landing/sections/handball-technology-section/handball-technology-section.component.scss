@@ -89,10 +89,11 @@
       transform: none; display: block; padding: 0; background: transparent;
     }
     &__materials > div { position: absolute; width: max-content; max-width: 42%; text-align: left; }
-    &__materials > .handball-tech__material--grip { left: 22%; top: 38.4%; }
-    &__materials > .handball-tech__material--foam { left: 31.4%; top: 42%; }
-    &__materials > .handball-tech__material--lock { left: 40.5%; top: 45.9%; }
-    &__materials > .handball-tech__material--air { left: 49.8%; top: 49.8%; }
+    // Keep both text lines clear of the vertical stem beneath each callout.
+    &__materials > .handball-tech__material--grip { left: 22%; top: 37.3%; }
+    &__materials > .handball-tech__material--foam { left: 31.4%; top: 40.9%; }
+    &__materials > .handball-tech__material--lock { left: 40.5%; top: 44.8%; }
+    &__materials > .handball-tech__material--air { left: 49.8%; top: 48.7%; }
     &__materials dt { font-size: clamp(.58rem, 2.2vw, .74rem); }
     &__materials dd { font-size: clamp(.5rem, 1.9vw, .64rem); }
   }

@@ -84,7 +84,8 @@
     &__statement p { margin: .7rem auto 0; max-width: 100%; font-size: clamp(.6rem, 2.44vw, .78rem); line-height: 1.18; color: #787878; }
     &__materials {
       // The mirrored handball artwork's lines share a common end point.
-      top: 38%; left: 33%; width: 64%; height: auto;
+      // Line endpoints are level with the label titles (not the space above them).
+      top: 41.2%; left: 33%; width: 64%; height: auto;
       display: grid; gap: clamp(10px, 1.6dvh, 18px);
       padding: 0; background: transparent;
     }

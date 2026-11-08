@@ -209,12 +209,14 @@
     &__description { max-width: 100%; margin: .65rem auto 0; font-size: clamp(.62rem, 2.45vw, .77rem); line-height: 1.18; }
     &__layers {
       z-index: 4;
-      top: 44%; left: 42%;
-      width: 55%; padding: 0; gap: clamp(10px, 1.8dvh, 20px);
+      // All four horizontal guide lines finish at roughly 70% of the
+      // portrait viewport; their HTML labels begin just after that point.
+      top: 44%; left: 70%;
+      width: 29%; padding: 0; gap: clamp(10px, 1.8dvh, 20px);
       background: transparent;
     }
     &__layer { padding: 0; }
-    &__layer-name { font-size: clamp(.57rem, 2.25vw, .72rem); }
-    &__layer-detail { font-size: clamp(.49rem, 1.95vw, .64rem); }
+    &__layer-name { font-size: clamp(.5rem, 1.95vw, .68rem); }
+    &__layer-detail { font-size: clamp(.43rem, 1.6vw, .6rem); }
   }
 }

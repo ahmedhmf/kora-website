@@ -74,8 +74,8 @@
     white-space: nowrap;
     opacity: 0;
     transform: translateY(34px);
-    filter: blur(9px);
-    transition: opacity 1s var(--ease-out-expo), transform 1.05s var(--ease-out-expo), filter 1.05s ease-out;
+    clip-path: inset(0 0 100% 0);
+    transition: opacity .85s var(--ease-out-expo), transform .95s var(--ease-out-expo), clip-path .95s var(--ease-out-expo);
   }
 
   &__statement-row:nth-child(1) .peak__headline-line { transition-delay: 0.15s; }
@@ -100,20 +100,20 @@
       opacity: 1;
       transform: translateY(0);
     }
-    .peak__headline-line { filter: blur(0); }
+    .peak__headline-line { clip-path: inset(0 0 0 0); }
   }
 }
 
 @keyframes identity-portrait-awaken {
-  from { opacity: 0.65; filter: blur(7px); }
-  to { opacity: 1; filter: blur(0); }
+  from { clip-path: inset(0 0 0 100%); transform: scale(1.05); }
+  to { clip-path: inset(0 0 0 0); transform: scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .peak {
     &__portrait-wrap { transform: none !important; transition: none; }
     &__portrait { animation: none !important; filter: none; }
-    &__eyebrow, &__headline-line, &__annotation { opacity: 1; transform: none; filter: none; transition: none; }
+    &__eyebrow, &__headline-line, &__annotation { opacity: 1; transform: none; clip-path: none; transition: none; }
   }
 }
 

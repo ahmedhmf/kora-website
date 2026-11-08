@@ -60,9 +60,9 @@
     font-size: clamp(0.72rem, 0.833vw, 1.8rem);
     line-height: 1.25;
     opacity: 0;
-    filter: blur(5px);
     transform: translate3d(0, 14px, 0);
-    transition: opacity .8s var(--ease-out-expo), transform .9s var(--ease-out-expo), filter .9s ease-out;
+    clip-path: inset(0 0 100% 0);
+    transition: opacity .7s var(--ease-out-expo), transform .8s var(--ease-out-expo), clip-path .8s var(--ease-out-expo);
   }
 
   @for $i from 1 through 5 {
@@ -82,20 +82,20 @@
       opacity: 1;
       transform: translateY(0);
     }
-    .handball-balls__features li { opacity: 1; filter: blur(0); transform: none; }
+    .handball-balls__features li { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
   }
 }
 
 @keyframes handballs-product-arrive {
-  from { opacity: .65; filter: blur(6px); transform: scale(1.035); }
-  to { opacity: 1; filter: blur(0); transform: scale(1); }
+  from { opacity: .85; transform: scale(1.05); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .handball-balls {
     &__backdrop { transform: none !important; transition: none; }
     &__image { animation: none !important; filter: none; transform: none; }
-    &__eyebrow, &__features, &__features li { opacity: 1; filter: none; transform: none; transition: none; }
+    &__eyebrow, &__features, &__features li { opacity: 1; clip-path: none; transform: none; transition: none; }
   }
 }
 
@@ -109,7 +109,6 @@
       margin-left: 0;
       padding: 0.55rem 0.65rem;
       background: rgba(245,245,245,0.86);
-      backdrop-filter: blur(4px);
     }
     &__features li { font-size: clamp(0.7rem, 2.9vw, 0.9rem); min-height: 32px; }
   }

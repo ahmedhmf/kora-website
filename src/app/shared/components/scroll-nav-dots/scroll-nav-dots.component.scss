@@ -15,8 +15,6 @@
     border-radius: 999px;
     background: rgba(15, 29, 44, 0.24);
     border: 1px solid rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
   }
 
   &__item {
@@ -70,7 +68,6 @@
     color: #ffffff;
     background: rgba(14, 26, 38, 0.72);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
     opacity: 0;
     transform: translateX(6px);
     pointer-events: none;

@@ -184,3 +184,34 @@
     &__description { max-width: 32rem; font-size: clamp(0.73rem, 2.4vw, 0.9rem); }
   }
 }
+
+@media (max-width: 768px) {
+  .dna {
+    &::after { display: none; }
+    &__image { object-position: 0% center; opacity: 1; }
+    &__overlay { padding: 0; }
+    &__eyebrow { display: none; }
+    &__content {
+      position: absolute;
+      top: clamp(127px, 14dvh, 155px);
+      right: 4%;
+      bottom: auto;
+      width: 92%;
+      transform: none;
+      text-align: center;
+    }
+    &__headline { font-size: clamp(2.25rem, 9.4vw, 3.4rem); line-height: .91; }
+    &__line--2, &__line--3 { display: inline-block; }
+    &__line--2::after { content: ' '; white-space: pre; }
+    &__description { max-width: 100%; margin: .65rem auto 0; font-size: clamp(.62rem, 2.45vw, .77rem); line-height: 1.18; }
+    &__layers {
+      z-index: 4;
+      top: 44%; left: 42%;
+      width: 55%; padding: 0; gap: clamp(10px, 1.8dvh, 20px);
+      background: transparent;
+    }
+    &__layer { padding: 0; }
+    &__layer-name { font-size: clamp(.57rem, 2.25vw, .72rem); }
+    &__layer-detail { font-size: clamp(.49rem, 1.95vw, .64rem); }
+  }
+}

@@ -142,3 +142,21 @@
     &__portrait { object-position: center 42%; }
   }
 }
+
+@media (max-width: 768px) {
+  .peak {
+    &__split { grid-template-rows: 49% 51%; }
+    &__content {
+      min-height: 49dvh;
+      padding: clamp(126px, 14dvh, 155px) 3vw 0;
+      display: block;
+      text-align: center;
+    }
+    &__eyebrow { display: none; }
+    &__statement { margin: 0; padding: 0; }
+    &__statement-row { margin-bottom: .05rem; }
+    &__headline-line { font-size: clamp(2.15rem, 9.8vw, 3.35rem); white-space: nowrap; letter-spacing: -.076em; }
+    &__annotation { font-size: clamp(.55rem, 2.35vw, .75rem); color: #8c8c8c; }
+    &__portrait { object-position: 53% center; }
+  }
+}

@@ -7,6 +7,8 @@
   background: #f0f0f0;
   color: #080808;
 
+  &__mobile-spec { display: none; }
+
   &__backdrop {
     position: absolute;
     inset: 0;
@@ -115,5 +117,23 @@
       background: rgba(245,245,245,0.86);
     }
     &__features li { white-space: normal; font-size: clamp(0.7rem, 2.9vw, 0.9rem); min-height: 30px; }
+  }
+}
+
+@media (max-width: 768px) {
+  .impact {
+    &__eyebrow { display: none; }
+    &__bg-image { object-position: 49% center; }
+    &__content { padding: 0 4vw clamp(29px, 3.8dvh, 43px); justify-content: flex-end; }
+    &__mobile-spec {
+      display: block; position: absolute;
+      left: 6.5%; bottom: clamp(31px, 4.2dvh, 48px);
+      font-size: clamp(.4rem, 1.65vw, .56rem); line-height: 1.08;
+      font-weight: 600; letter-spacing: -.025em;
+    }
+    &__mobile-spec small { font-size: .7em; }
+    &__features { align-self: flex-end; width: 59%; margin: 0; padding: 0; background: transparent; }
+    &__features li { min-height: 0; padding: 2px 0; white-space: normal; font-size: clamp(.52rem, 2.18vw, .68rem); line-height: 1.1; }
+    &__features li::before { flex-basis: 11px; height: 10px; margin-right: 2px; }
   }
 }

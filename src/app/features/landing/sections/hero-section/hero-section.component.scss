@@ -151,3 +151,20 @@
 @media (min-width: 2200px) {
   .hero__container { padding-left: 6vw; padding-bottom: 20vh; }
 }
+
+// The portrait composition is deliberately independent of the desktop artwork layout.
+@media (max-width: 768px) {
+  .hero {
+    &__grid { display: none; }
+    &__image { object-position: 61% 50%; }
+    &__container {
+      align-items: flex-start;
+      justify-content: center;
+      padding: clamp(126px, 14dvh, 155px) 5vw 0;
+    }
+    &__headline-group { width: 100%; text-align: center; align-self: flex-start; }
+    &__title { font-size: clamp(2.3rem, 10.3vw, 3.35rem); white-space: nowrap; letter-spacing: -.065em; }
+    &__subtitle { margin-inline: auto; max-width: none; font-size: clamp(.85rem, 3.5vw, 1.05rem); }
+    &__description { margin: .85rem auto 0; max-width: 95%; font-size: clamp(.59rem, 2.55vw, .77rem); line-height: 1.15; }
+  }
+}

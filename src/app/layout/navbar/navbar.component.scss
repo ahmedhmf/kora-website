@@ -30,3 +30,13 @@
     &__logo { width: clamp(145px, 6.3vw, 250px); }
   }
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    padding: clamp(30px, 4.8dvh, 46px) 1rem 0;
+    &__brand { margin-inline: auto; }
+    &__logo { width: clamp(110px, 27vw, 124px); }
+  }
+}

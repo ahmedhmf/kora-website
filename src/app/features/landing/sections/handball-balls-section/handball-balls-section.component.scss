@@ -118,8 +118,9 @@
 
 @media (max-width: 768px) {
   .handball-balls {
+    background: #dcdcdc;
     &__eyebrow { display: none; }
-    &__image { object-position: 31% center; }
+    &__image { object-position: 31% center; filter: brightness(1.009); }
     &__content { padding: 0 4vw clamp(29px, 3.8dvh, 43px); justify-content: flex-end; }
     &__mobile-spec {
       display: block; position: absolute; left: 6%;

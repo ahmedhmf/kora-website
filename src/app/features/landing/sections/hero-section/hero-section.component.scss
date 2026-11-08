@@ -155,6 +155,7 @@
 // The portrait composition is deliberately independent of the desktop artwork layout.
 @media (max-width: 768px) {
   .hero {
+    background: #d4d4d4;
     &__grid { display: none; }
     &__image { object-position: 61% 50%; }
     &__container {

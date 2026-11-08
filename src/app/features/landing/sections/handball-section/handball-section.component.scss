@@ -137,6 +137,8 @@
 
 @media (max-width: 768px) {
   .beyond {
+    background: #efefef;
+    &__left { background: #efefef; }
     &__split { grid-template-rows: 49% 51%; }
     &__content {
       min-height: 49dvh;

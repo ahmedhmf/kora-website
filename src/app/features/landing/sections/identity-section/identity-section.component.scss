@@ -145,6 +145,8 @@
 
 @media (max-width: 768px) {
   .peak {
+    background: #e0e0e0;
+    &__left { background: #e0e0e0; }
     &__split { grid-template-rows: 49% 51%; }
     &__content {
       min-height: 49dvh;

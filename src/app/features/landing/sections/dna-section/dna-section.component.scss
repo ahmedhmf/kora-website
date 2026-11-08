@@ -187,6 +187,7 @@
 
 @media (max-width: 768px) {
   .dna {
+    background: #e0e0e0;
     &::after { display: none; }
     // Show the mobile artwork at a smaller scale so the HTML labels sit beside
     // the line ends, rather than floating over the ball's printed graphics.

@@ -209,16 +209,16 @@
     &__description { max-width: 100%; margin: .65rem auto 0; font-size: clamp(.62rem, 2.45vw, .77rem); line-height: 1.18; }
     &__layers {
       z-index: 4;
-      // Each material label begins at the top of its own vertical guide line.
-      // The original mobile design staggers them from left to right.
-      top: 45.5%; left: 41.5%;
-      width: 57%; padding: 0; gap: clamp(6px, 1.05dvh, 12px);
-      background: transparent;
+      // Use the portrait image's own coordinates, independent of font size.
+      // The new 944 × 2047 mobile asset has four guide-line tops.
+      inset: 0; width: 100%; height: 100%; transform: none;
+      display: block; padding: 0; background: transparent;
     }
-    &__layer { width: 100%; padding: 0; }
-    &__layer:nth-child(2) { padding-left: 8vw; }
-    &__layer:nth-child(3) { padding-left: 16vw; }
-    &__layer:nth-child(4) { padding-left: 24vw; }
+    &__layer { position: absolute; width: max-content; max-width: 35%; padding: 0; }
+    &__layer--skin { left: 41.5%; top: 45.5%; }
+    &__layer--core { left: 49.3%; top: 48.8%; }
+    &__layer--frame { left: 56.6%; top: 52.1%; }
+    &__layer--airlock { left: 64.8%; top: 55.4%; }
     &__layer-name { font-size: clamp(.59rem, 2.35vw, .76rem); }
     &__layer-detail { font-size: clamp(.5rem, 1.9vw, .66rem); }
   }

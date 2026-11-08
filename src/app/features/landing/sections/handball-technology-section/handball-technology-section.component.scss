@@ -75,6 +75,7 @@
 
 @media (max-width: 768px) {
   .handball-tech {
+    &__backdrop { inset: 17% 0 0; }
     &__image { object-position: 100% center; }
     &__content { padding: clamp(126px, 14dvh, 155px) 4vw 0; display: block; text-align: center; }
     &__eyebrow { display: none; }

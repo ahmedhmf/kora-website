@@ -157,7 +157,7 @@
   .hero {
     background: #d4d4d4;
     &__grid { display: none; }
-    &__image { object-position: 61% 50%; }
+    &__image { object-position: center; }
     &__container {
       align-items: flex-start;
       justify-content: center;

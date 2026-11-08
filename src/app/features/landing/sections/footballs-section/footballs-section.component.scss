@@ -124,7 +124,7 @@
   .impact {
     background: #e8e8e8;
     &__eyebrow { display: none; }
-    &__bg-image { object-position: 49% center; filter: brightness(1.005); }
+    &__bg-image { object-position: center; filter: none; }
     &__content { padding: 0 4vw clamp(29px, 3.8dvh, 43px); justify-content: flex-end; }
     &__mobile-spec {
       display: block; position: absolute;

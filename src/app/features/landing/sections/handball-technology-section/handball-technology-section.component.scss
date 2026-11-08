@@ -76,8 +76,8 @@
 @media (max-width: 768px) {
   .handball-tech {
     background: #e6e6e6;
-    &__backdrop { inset: 17% 0 0; }
-    &__image { object-position: 100% center; filter: brightness(.987); }
+    &__backdrop { inset: 0; }
+    &__image { object-position: center; filter: none; }
     &__content { padding: clamp(126px, 14dvh, 155px) 4vw 0; display: block; text-align: center; }
     &__eyebrow { display: none; }
     &__statement { margin: 0; padding: 0; max-width: 100%; }

@@ -3,7 +3,10 @@
     <div class="peak__left"></div>
     <div class="peak__right">
       <div class="peak__portrait-wrap" [style.transform]="rightPortraitTransform()">
-        <img class="peak__portrait" src="/assets/kora/3rd.webp" alt="Red and black KORA football culture artwork" loading="lazy" />
+        <picture>
+          <source media="(max-width: 768px)" srcset="/assets/kora/mobile/3.webp" />
+          <img class="peak__portrait" src="/assets/kora/3rd.webp" alt="Red and black KORA football culture artwork" loading="lazy" />
+        </picture>
       </div>
     </div>
   </div>

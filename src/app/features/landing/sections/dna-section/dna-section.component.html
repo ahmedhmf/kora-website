@@ -1,6 +1,9 @@
 <section id="dna" class="dna" [class.dna--active]="isActive()" aria-label="KORA DNA — Performance with purpose">
   <div class="dna__image-wrap" [style.transform]="imageTransform()">
-    <img class="dna__image" src="/assets/kora/2nd-layers.webp" alt="Exploded KORA match ball with four construction layers and fine guide lines" loading="lazy" />
+    <picture>
+      <source media="(max-width: 768px)" srcset="/assets/kora/mobile/2.webp" />
+      <img class="dna__image" src="/assets/kora/2nd-layers.webp" alt="Exploded KORA match ball with four construction layers and fine guide lines" loading="lazy" />
+    </picture>
   </div>
 
   <div class="dna__layers" aria-label="Four layers of KORA ball technology">

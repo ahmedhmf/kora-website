@@ -138,8 +138,9 @@
 @media (max-width: 768px) {
   .beyond {
     background: #efefef;
-    &__left { background: #efefef; }
-    &__split { grid-template-rows: 49% 51%; }
+    &__split { display: block; }
+    &__left { display: none; }
+    &__right { position: absolute; inset: 0; background: #efefef; }
     &__content {
       min-height: 49dvh;
       padding: clamp(126px, 14dvh, 155px) 4vw 0;
@@ -150,6 +151,6 @@
     &__statement { margin: 0; padding: 0; }
     &__headline { font-size: clamp(2.5rem, 10.3vw, 3.5rem); line-height: .94; }
     &__description { max-width: 100%; margin-top: .75rem; font-size: clamp(.64rem, 2.6vw, .8rem); line-height: 1.18; color: #828282; }
-    &__image { object-position: 48% center; }
+    &__image { object-position: center; }
   }
 }

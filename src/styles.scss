@@ -88,3 +88,10 @@ img {
   max-width: 100%;
   display: block;
 }
+
+/* Full-bleed art keeps the same dimensions when <picture> selects a mobile asset. */
+picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

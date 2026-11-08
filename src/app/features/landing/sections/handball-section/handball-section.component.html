@@ -3,7 +3,10 @@
     <div class="beyond__left"></div>
     <div class="beyond__right">
       <div class="beyond__image-wrap" [style.transform]="portraitOffset()">
-        <img class="beyond__image" src="/assets/kora/5th.webp" alt="Handball athlete captured in a high-energy motion study" loading="lazy" />
+        <picture>
+          <source media="(max-width: 768px)" srcset="/assets/kora/mobile/5.webp" />
+          <img class="beyond__image" src="/assets/kora/5th.webp" alt="Handball athlete captured in a high-energy motion study" loading="lazy" />
+        </picture>
       </div>
     </div>
   </div>

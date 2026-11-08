@@ -1,6 +1,9 @@
 <section id="footballs" class="impact" [class.impact--active]="isActive()" aria-label="KORA performance footballs">
   <div class="impact__backdrop" [style.transform]="frameTransform()">
-    <img class="impact__bg-image" src="/assets/kora/4th.webp" alt="Three KORA performance footballs in red, blue and bronze colorways" loading="lazy" />
+    <picture>
+      <source media="(max-width: 768px)" srcset="/assets/kora/mobile/4.webp" />
+      <img class="impact__bg-image" src="/assets/kora/4th.webp" alt="Three KORA performance footballs in red, blue and bronze colorways" loading="lazy" />
+    </picture>
   </div>
 
   <div class="impact__content">

@@ -1,6 +1,9 @@
 <section id="handball-technology" class="handball-tech" [class.handball-tech--active]="isActive()" aria-label="KORA handball technology — engineered for every play">
   <div class="handball-tech__backdrop" [style.transform]="imageTransform()">
-    <img class="handball-tech__image" src="/assets/kora/7th-layers.webp" alt="Exploded KORA handball cutaway with four construction layers and guide lines" loading="lazy" />
+    <picture>
+      <source media="(max-width: 768px)" srcset="/assets/kora/mobile/7.webp" />
+      <img class="handball-tech__image" src="/assets/kora/7th-layers.webp" alt="Exploded KORA handball cutaway with four construction layers and guide lines" loading="lazy" />
+    </picture>
   </div>
   <div class="handball-tech__content">
     <p class="handball-tech__eyebrow">HANDBALL</p>

@@ -189,10 +189,9 @@
   .dna {
     background: #e0e0e0;
     &::after { display: none; }
-    // Show the mobile artwork at a smaller scale so the HTML labels sit beside
-    // the line ends, rather than floating over the ball's printed graphics.
-    &__image-wrap { inset: 17% 0 0; }
-    &__image { object-position: 10% center; opacity: 1; }
+    // Supplied portrait artwork already includes the correct whitespace and lines.
+    &__image-wrap { inset: 0; }
+    &__image { object-position: center; opacity: 1; }
     &__overlay { padding: 0; }
     &__eyebrow { display: none; }
     &__content {

@@ -1,6 +1,9 @@
 <section id="hero" class="hero" [class.hero--active]="isActive()" aria-label="KORA match balls">
   <div class="hero__backdrop" [style.transform]="parallaxTransform()">
-    <img class="hero__image" src="/assets/kora/Home.webp" alt="KORA footballer in motion" fetchpriority="high" />
+    <picture>
+      <source media="(max-width: 768px)" srcset="/assets/kora/mobile/1.webp" />
+      <img class="hero__image" src="/assets/kora/Home.webp" alt="KORA footballer in motion" fetchpriority="high" />
+    </picture>
   </div>
   <div class="hero__grid" aria-hidden="true"></div>
   <div class="hero__container">

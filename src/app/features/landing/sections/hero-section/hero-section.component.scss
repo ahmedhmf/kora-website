@@ -152,14 +152,6 @@
   .hero__container { padding-left: 6vw; padding-bottom: 20vh; }
 }
 
-// The M, D and italic K have different font side-bearings. Align their
-// visible strokes, not just the invisible text-box boundaries.
-@media (min-width: 769px) {
-  .hero__title { margin-inline-start: clamp(-4px, -.1vw, -2px); }
-  .hero__subtitle { padding-inline-start: clamp(1px, .1vw, 2px); }
-  .hero__description { padding-inline-start: clamp(1px, .2vw, 4px); }
-}
-
 // The portrait composition is deliberately independent of the desktop artwork layout.
 @media (max-width: 768px) {
   .hero {

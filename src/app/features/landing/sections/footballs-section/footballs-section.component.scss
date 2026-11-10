@@ -32,7 +32,7 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
     min-height: 100vh;
     min-height: max(100dvh, var(--kora-min-section-height));
@@ -40,7 +40,10 @@
   }
 
   &__eyebrow {
-    font-size: clamp(0.85rem, 1.042vw, 1.8rem);
+    position: absolute;
+    right: clamp(1.25rem, 7.1vw, 9rem);
+    bottom: clamp(4rem, 12vh, 9rem);
+    font-size: clamp(12px, 1.041667vw, 32px);
     font-weight: 400;
     letter-spacing: -0.035em;
     opacity: 0;

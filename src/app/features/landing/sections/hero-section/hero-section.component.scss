@@ -155,7 +155,7 @@
 // Align the smaller copy with the visible left edge of the display-font M.
 @media (min-width: 769px) {
   .hero__subtitle,
-  .hero__description { padding-inline-start: clamp(2px, .4vw, 8px); }
+  .hero__description { padding-inline-start: clamp(1px, .2vw, 4px); }
 }
 
 // The portrait composition is deliberately independent of the desktop artwork layout.

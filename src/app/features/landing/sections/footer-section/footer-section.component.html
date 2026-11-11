@@ -21,7 +21,10 @@
       <input id="kora-contact-email" type="email" name="email" autocomplete="email" [value]="email()" (input)="onFieldInput($event, 'email')" required />
       <label for="kora-contact-message">Message</label>
       <textarea id="kora-contact-message" name="message" rows="6" [value]="contactMessage()" (input)="onFieldInput($event, 'message')" required></textarea>
-      <button type="submit" [disabled]="contactSending()">{{ contactSending() ? 'Sending…' : 'Send' }}</button>
+      <div class="footer__honeypot" aria-hidden="true"><label for="kora-contact-website">Website</label><input id="kora-contact-website" type="text" tabindex="-1" autocomplete="off" [value]="honeypot()" (input)="onHoneypotInput($event)" /></div>
+      <div id="kora-contact-turnstile" class="footer__turnstile" aria-label="Spam protection verification"></div>
+      @if (verificationStatus()) { <p class="footer__status" role="status">{{ verificationStatus() }}</p> }
+      <button type="submit" [disabled]="contactSending() || !turnstileToken()">{{ contactSending() ? 'Sending…' : 'Send' }}</button>
       @if (status()) { <p class="footer__status" role="status">{{ status() }}</p> }
     </form>
     <div class="footer__details">

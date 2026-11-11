@@ -14,6 +14,7 @@ export class FooterSectionComponent {
   protected readonly email = signal('');
   protected readonly contactMessage = signal('');
   protected readonly status = signal('');
+  protected readonly contactSending = signal(false);
   protected readonly newsletterEmail = signal('');
   protected readonly consented = signal(false);
   protected readonly newsletterStatus = signal('');
@@ -42,11 +43,30 @@ export class FooterSectionComponent {
     this.status.set('');
   }
 
-  protected onContact(event: Event): void {
+  protected async onContact(event: Event): Promise<void> {
     event.preventDefault();
-    const subject = encodeURIComponent(`KORA website enquiry from ${this.name().trim()}`);
-    const body = encodeURIComponent(`Name: ${this.name().trim()}\nEmail: ${this.email().trim()}\n\n${this.contactMessage().trim()}`);
-    this.status.set('Opening your email app to send the message.');
-    window.location.href = `mailto:info@korafc.com?subject=${subject}&body=${body}`;
+    if (this.contactSending()) return;
+    this.contactSending.set(true);
+    this.status.set('Sending your message…');
+    try {
+      const response = await fetch('/contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: this.name().trim(),
+          email: this.email().trim(),
+          message: this.contactMessage().trim(),
+        }),
+      });
+      if (!response.ok) throw new Error('Unable to send');
+      this.name.set('');
+      this.email.set('');
+      this.contactMessage.set('');
+      this.status.set('Thank you! Your message has been sent.');
+    } catch {
+      this.status.set('We could not send your message. Please email info@korafc.com directly.');
+    } finally {
+      this.contactSending.set(false);
+    }
   }
 }

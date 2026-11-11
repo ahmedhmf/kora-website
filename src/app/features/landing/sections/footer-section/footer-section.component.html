@@ -21,7 +21,7 @@
       <input id="kora-contact-email" type="email" name="email" autocomplete="email" [value]="email()" (input)="onFieldInput($event, 'email')" required />
       <label for="kora-contact-message">Message</label>
       <textarea id="kora-contact-message" name="message" rows="6" [value]="contactMessage()" (input)="onFieldInput($event, 'message')" required></textarea>
-      <button type="submit">Send</button>
+      <button type="submit" [disabled]="contactSending()">{{ contactSending() ? 'Sending…' : 'Send' }}</button>
       @if (status()) { <p class="footer__status" role="status">{{ status() }}</p> }
     </form>
     <div class="footer__details">
@@ -34,10 +34,10 @@
         <a href="tel:+201020138899">+20 102 013 8899</a>
       </address>
       <nav class="footer__social" aria-label="Contact and social links">
-        <a href="https://wa.me/20020138899" target="_blank" rel="noopener noreferrer" aria-label="Message KORA Germany on WhatsApp">
+        <a href="https://wa.me/4917632249421" target="_blank" rel="noopener noreferrer" aria-label="Message KORA Germany on WhatsApp">
           <img src="/assets/kora/whatsapp.png" alt="" width="58" height="58" loading="lazy" />
         </a>
-        <a href="https://www.instagram.com/koraballs/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram">
           <img src="/assets/kora/instagram.png" alt="" width="36" height="36" loading="lazy" />
         </a>
         <a href="mailto:info@korafc.com" aria-label="Email KORA">

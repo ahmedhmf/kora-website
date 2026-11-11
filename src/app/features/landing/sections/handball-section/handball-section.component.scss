@@ -55,6 +55,9 @@
   &__eyebrow {
     font-size: clamp(0.85rem, 1.042vw, 1.8rem);
     font-weight: 400;
+    color: #ed1c24;
+    line-height: 1.15;
+    margin-bottom: 0.2rem;
     opacity: 0;
     transform: translateY(18px);
     transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);

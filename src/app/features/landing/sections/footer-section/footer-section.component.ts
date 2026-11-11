@@ -15,6 +15,7 @@ interface TurnstileApi {
 export class FooterSectionComponent {
   private readonly host = inject(ElementRef<HTMLElement>);
   private turnstileWidgetId = '';
+  private newsletterWidgetId = '';
   private turnstileApi?: TurnstileApi;
   readonly isActive = input(false);
   readonly progress = input(0);
@@ -24,14 +25,23 @@ export class FooterSectionComponent {
   protected readonly status = signal('');
   protected readonly contactSending = signal(false);
   protected readonly turnstileToken = signal('');
+  protected readonly newsletterToken = signal('');
   protected readonly verificationStatus = signal('Loading spam protection…');
+  protected readonly newsletterVerificationStatus = signal('Loading spam protection…');
   protected readonly honeypot = signal('');
+  protected readonly newsletterHoneypot = signal('');
+  protected readonly newsletterSending = signal(false);
   protected readonly newsletterEmail = signal('');
   protected readonly consented = signal(false);
   protected readonly newsletterStatus = signal('');
 
   constructor() {
-    afterNextRender(() => { void this.initializeTurnstile(); });
+    afterNextRender(() => {
+      if (new URLSearchParams(window.location.search).get('newsletter') === 'confirmed') {
+        this.newsletterStatus.set('Your email has been confirmed. Welcome to KORA!');
+      }
+      void this.initializeTurnstile();
+    });
   }
 
   private async initializeTurnstile(): Promise<void> {
@@ -62,13 +72,28 @@ export class FooterSectionComponent {
         'error-callback': () => { this.turnstileToken.set(''); this.verificationStatus.set('Verification could not load. Please try again.'); },
       });
       this.verificationStatus.set('');
+      const newsletterContainer = this.host.nativeElement.querySelector('#kora-newsletter-turnstile') as HTMLElement | null;
+      if (newsletterContainer) {
+        this.newsletterWidgetId = api.render(newsletterContainer, {
+          sitekey: config.siteKey,
+          callback: token => { this.newsletterToken.set(token); this.newsletterVerificationStatus.set(''); },
+          'expired-callback': () => { this.newsletterToken.set(''); this.newsletterVerificationStatus.set('Verification expired. Please verify again.'); },
+          'error-callback': () => { this.newsletterToken.set(''); this.newsletterVerificationStatus.set('Verification could not load. Please try again.'); },
+        });
+        this.newsletterVerificationStatus.set('');
+      }
     } catch {
       this.verificationStatus.set('Spam protection is unavailable. Please email info@korafc.com directly.');
+      this.newsletterVerificationStatus.set('Spam protection is unavailable. Please try again later.');
     }
   }
 
   protected onHoneypotInput(event: Event): void {
     this.honeypot.set((event.target as HTMLInputElement).value);
+  }
+
+  protected onNewsletterHoneypotInput(event: Event): void {
+    this.newsletterHoneypot.set((event.target as HTMLInputElement).value);
   }
 
   protected onNewsletterEmailInput(event: Event): void {
@@ -81,10 +106,37 @@ export class FooterSectionComponent {
     this.newsletterStatus.set('');
   }
 
-  protected onSubscribe(event: Event): void {
+  protected async onSubscribe(event: Event): Promise<void> {
     event.preventDefault();
-    if (!this.consented() || !this.newsletterEmail().trim()) return;
-    this.newsletterStatus.set('Newsletter subscriptions are not connected yet. Please check back soon.');
+    if (this.newsletterSending()) return;
+    if (!this.consented() || !this.newsletterEmail().trim() || !this.newsletterToken()) {
+      this.newsletterStatus.set('Please accept the privacy policy and complete verification.');
+      return;
+    }
+    this.newsletterSending.set(true);
+    this.newsletterStatus.set('Sending your confirmation email…');
+    try {
+      const response = await fetch('/subscribe.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: this.newsletterEmail().trim(),
+          consent: this.consented(),
+          website: this.newsletterHoneypot(),
+          turnstileToken: this.newsletterToken(),
+        }),
+      });
+      if (!response.ok) throw new Error('Subscription unavailable');
+      this.newsletterEmail.set('');
+      this.consented.set(false);
+      this.newsletterStatus.set('Please check your inbox and confirm your subscription.');
+    } catch {
+      this.newsletterStatus.set('Subscription could not be completed. Please try again later.');
+    } finally {
+      this.newsletterToken.set('');
+      if (this.newsletterWidgetId) this.turnstileApi?.reset(this.newsletterWidgetId);
+      this.newsletterSending.set(false);
+    }
   }
 
   protected onFieldInput(event: Event, field: 'name' | 'email' | 'message'): void {

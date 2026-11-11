@@ -9,7 +9,10 @@
       </label>
       <label class="footer__email-label" for="kora-newsletter-email">Email address</label>
       <input id="kora-newsletter-email" class="footer__email-input" type="email" name="newsletter-email" placeholder="name@example.com" autocomplete="email" [value]="newsletterEmail()" (input)="onNewsletterEmailInput($event)" required />
-      <button class="footer__subscribe" type="submit">SUBSCRIBE</button>
+      <div class="footer__honeypot" aria-hidden="true"><label for="kora-newsletter-website">Website</label><input id="kora-newsletter-website" type="text" tabindex="-1" autocomplete="off" [value]="newsletterHoneypot()" (input)="onNewsletterHoneypotInput($event)" /></div>
+      <div id="kora-newsletter-turnstile" class="footer__turnstile" aria-label="Newsletter spam protection verification"></div>
+      @if (newsletterVerificationStatus()) { <p class="footer__signup-status" role="status">{{ newsletterVerificationStatus() }}</p> }
+      <button class="footer__subscribe" type="submit" [disabled]="newsletterSending() || !newsletterToken()">{{ newsletterSending() ? 'SENDING…' : 'SUBSCRIBE' }}</button>
       @if (newsletterStatus()) { <p class="footer__signup-status" role="status">{{ newsletterStatus() }}</p> }
     </form>
   </div>

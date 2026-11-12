@@ -169,3 +169,28 @@
     &__description { margin: .85rem auto 0; max-width: 95%; font-size: clamp(.59rem, 2.55vw, .77rem); line-height: 1.15; }
   }
 }
+
+// Mobile hero: keep the entire headline on a clean, light portion of the image.
+// The portrait artwork's dark upper silhouette otherwise overlaps the copy
+// on tall phones (especially Safari's dynamic viewport).
+@media (max-width: 768px) {
+  .hero {
+    &__backdrop picture {
+      transform: translateY(clamp(72px, 10dvh, 125px));
+    }
+
+    &__grid {
+      display: block;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        #d4d4d4 0%,
+        rgba(212, 212, 212, .99) 18%,
+        rgba(212, 212, 212, .95) 27%,
+        rgba(212, 212, 212, .84) 35%,
+        rgba(212, 212, 212, .42) 45%,
+        rgba(212, 212, 212, 0) 56%
+      );
+    }
+  }
+}

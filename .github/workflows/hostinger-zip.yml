@@ -1,0 +1,63 @@
+name: Build Hostinger Upload ZIP
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-hostinger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout KORA website
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build prerendered website
+        run: npm run build
+
+      - name: Prepare Hostinger public_html package
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p hostinger-upload
+          cp -a dist/kora-web-site/browser/. hostinger-upload/
+          # Angular's public/ PHP endpoints should be copied into the browser
+          # output, but ensure the deployable package always contains them.
+          cp public/contact.php public/subscribe.php public/turnstile-sitekey.php hostinger-upload/
+          test -f hostinger-upload/index.html
+          test -f hostinger-upload/contact.php
+          test -f hostinger-upload/subscribe.php
+          test -f hostinger-upload/turnstile-sitekey.php
+          test -f hostinger-upload/privacy-policy/index.html
+          test -f hostinger-upload/legal-information/index.html
+          cat > hostinger-upload/.htaccess <<'APACHE'
+          Options -Indexes
+          DirectoryIndex index.html
+          <IfModule mod_rewrite.c>
+          RewriteEngine On
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteCond %{REQUEST_FILENAME} !-d
+          RewriteRule ^ index.html [L]
+          </IfModule>
+          APACHE
+          (cd hostinger-upload && zip -qr ../kora-hostinger-upload.zip .)
+
+      - name: Upload website ZIP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kora-hostinger-upload
+          path: kora-hostinger-upload.zip
+          if-no-files-found: error
+          retention-days: 30

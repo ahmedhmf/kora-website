@@ -1,0 +1,30 @@
+.legal {
+  min-height: 100dvh;
+  background: #ededed;
+  color: #101010;
+  padding: clamp(1.25rem, 4vw, 4rem);
+  font-family: var(--font-body);
+}
+.legal__header, .legal__footer, .legal__footer nav {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+}
+.legal__header img { width: clamp(95px, 9vw, 132px); height: auto; }
+.legal__back { text-decoration: underline; text-underline-offset: 4px; font-size: .9rem; }
+.legal__article { max-width: 1000px; margin: clamp(4rem, 9vw, 8rem) auto; }
+.legal__eyebrow { font-size: .85rem; letter-spacing: .09em; }
+.legal h1 { font-size: clamp(3.3rem, 8vw, 7rem); font-weight: 600; line-height: 1; margin: 1.3rem 0; text-transform: uppercase; }
+.legal__lead { font-size: clamp(1.1rem, 2vw, 1.5rem); max-width: 760px; line-height: 1.55; }
+.legal__updated { font-size: .85rem; color: #555; margin: 1.8rem 0 4rem; }
+.legal__section { border-top: 1px solid #aaa; padding: 1.5rem 0 2rem; }
+.legal__section h2 { font-size: clamp(1.35rem, 2.1vw, 2rem); text-transform: uppercase; font-weight: 600; margin-bottom: 1.1rem; }
+.legal__section p { line-height: 1.7; margin-bottom: .85rem; max-width: 850px; }
+.legal__contact { padding: 2rem 0; }
+.legal__contact a { text-decoration: underline; }
+.legal__footer { padding-top: 1.5rem; border-top: 1px solid #aaa; font-size: .85rem; }
+.legal__footer nav { flex-wrap: wrap; }
+.legal__footer a:hover, .legal__back:hover { text-decoration: underline; }
+.legal a:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+@media (max-width: 700px) {
+  .legal__footer { align-items: flex-start; flex-direction: column; }
+  .legal__footer nav { justify-content: flex-start; }
+}

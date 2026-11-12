@@ -5,7 +5,7 @@
     <form class="footer__signup-form" (submit)="onSubscribe($event)">
       <label class="footer__consent">
         <input type="checkbox" [checked]="consented()" (change)="onConsentChange($event)" required />
-        <span>I have read and understood the privacy policy.</span>
+        <span>I agree to receive KORA product news and promotional emails. I can unsubscribe at any time. Read our <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</span>
       </label>
       <label class="footer__email-label" for="kora-newsletter-email">Email address</label>
       <input id="kora-newsletter-email" class="footer__email-input" type="email" name="newsletter-email" placeholder="name@example.com" autocomplete="email" [value]="newsletterEmail()" (input)="onNewsletterEmailInput($event)" required />
@@ -52,4 +52,9 @@
       </nav>
     </div>
   </div>
+  <nav class="footer__legal" aria-label="Legal information">
+    <span>© KORA / A TALHA STORE BRAND</span>
+    <a href="/privacy-policy">Privacy Policy</a>
+    <a href="/legal-information">Legal Information</a>
+  </nav>
 </footer>

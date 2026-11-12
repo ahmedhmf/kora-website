@@ -146,3 +146,9 @@
     &__features li::before { flex-basis: 11px; height: 10px; margin-right: 2px; }
   }
 }
+
+// The desktop artwork already contains its specification stamp.
+// Show this separate stamp only with the stamp-free mobile artwork.
+@media (min-width: 769px) {
+  .impact__stamp { display: none; }
+}

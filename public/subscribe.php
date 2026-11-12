@@ -88,11 +88,27 @@ curl_setopt_array($request, [
     CURLOPT_CONNECTTIMEOUT => 5,
     CURLOPT_TIMEOUT => 12,
 ]);
-curl_exec($request);
-$status = curl_getinfo($request, CURLINFO_HTTP_CODE);
+$brevoResponse = curl_exec($request);
+$status = (int) curl_getinfo($request, CURLINFO_HTTP_CODE);
+$curlError = curl_error($request);
 curl_close($request);
 if ($status < 200 || $status >= 300) {
-    // Never reveal whether an email already exists in the subscriber database.
+    // Diagnostic log lives OUTSIDE public_html. Never log subscriber addresses,
+    // API keys, or verification tokens.
+    $details = is_string($brevoResponse) ? json_decode($brevoResponse, true) : null;
+    $errorCode = is_array($details) ? substr((string) ($details['code'] ?? 'unknown'), 0, 80) : 'unknown';
+    $errorMessage = is_array($details) ? substr((string) ($details['message'] ?? 'No message provided'), 0, 350) : ($curlError !== '' ? substr($curlError, 0, 350) : 'No structured error returned');
+    $errorCode = preg_replace('/[^a-zA-Z0-9_.-]/', '_', $errorCode) ?: 'unknown';
+    $errorMessage = preg_replace('/[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}/', '[redacted-email]', $errorMessage) ?? '';
+    $errorMessage = str_replace([$apiKey, "\r", "\n"], ['[redacted-key]', ' ', ' '], $errorMessage);
+    $diagnostic = sprintf("[%s] Brevo HTTP %d; code=%s; message=%s\n", gmdate('c'), $status, $errorCode, $errorMessage);
+    $logFile = dirname(__DIR__) . '/brevo-debug.log';
+    if (file_put_contents($logFile, $diagnostic, FILE_APPEND | LOCK_EX) !== false) {
+        @chmod($logFile, 0600);
+    } else {
+        error_log('[KORA newsletter] Brevo request failed; HTTP ' . $status . '; code=' . $errorCode);
+    }
+    // Do not expose raw Brevo errors or whether an address is already subscribed.
     newsletterRespond(502, 'Unable to request confirmation email');
 }
 
